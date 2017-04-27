@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>LagoVista.IoT.Verifiers.Rest</id>
+    <version>0.8.65-alpha00969</version>
+    <authors>Software Logistics, LLC</authors>
+    <owners>Software Logistics, LLC</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/LagoVista/IoTEngine</projectUrl>
+    <iconUrl>http://bytemaster.blob.core.windows.net/icons/LagoVistaIcon.png</iconUrl>
+    <description>Provides a set of REST Services to Interact with Verifiers that are created as part of the LagoVista IoT, Devices and Home Automation Frameworks.  Verifiers are used to confirm that configured components work as expected.</description>
+    <releaseNotes>Initial and Unstable Release</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>HomeAutomation IoT</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="10.0.1" />
+      <dependency id="LagoVista.Core" version="0.8.112-alpha00944" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\release\netstandard1.6\LagoVista.IoT.Verifiers.Rest.xml" target="content\wwwroot\xmldocs" />
+    <file src="bin\release\netstandard1.6\*.dll" target="lib\netstandard1.6" />
+  </files>
+</package>
