@@ -9,7 +9,6 @@ using LagoVista.Core.Models;
 using LagoVista.Core.Validation;
 using LagoVista.IoT.Verifiers.Models;
 using System.Threading.Tasks;
-using LagoVista.Core.Authentication.Exceptions;
 using static LagoVista.Core.Models.AuthorizeResult;
 
 namespace LagoVista.IoT.Verifiers.Managers
