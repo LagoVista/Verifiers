@@ -104,6 +104,12 @@ namespace LagoVista.IoT.Verifiers.Resources
 //Resources:VerifierResources:Verifier_InputType_Text
 
 		public static string Verifier_InputType_Text { get { return GetResourceString("Verifier_InputType_Text"); } }
+//Resources:VerifierResources:Verifier_PathAndQueryString
+
+		public static string Verifier_PathAndQueryString { get { return GetResourceString("Verifier_PathAndQueryString"); } }
+//Resources:VerifierResources:Verifier_PathAndQueryString_Help
+
+		public static string Verifier_PathAndQueryString_Help { get { return GetResourceString("Verifier_PathAndQueryString_Help"); } }
 //Resources:VerifierResources:Verifier_ShouldSucceed
 
 		public static string Verifier_ShouldSucceed { get { return GetResourceString("Verifier_ShouldSucceed"); } }
@@ -142,6 +148,8 @@ namespace LagoVista.IoT.Verifiers.Resources
 			public const string Verifier_InputType_Help = "Verifier_InputType_Help";
 			public const string Verifier_InputType_Select = "Verifier_InputType_Select";
 			public const string Verifier_InputType_Text = "Verifier_InputType_Text";
+			public const string Verifier_PathAndQueryString = "Verifier_PathAndQueryString";
+			public const string Verifier_PathAndQueryString_Help = "Verifier_PathAndQueryString_Help";
 			public const string Verifier_ShouldSucceed = "Verifier_ShouldSucceed";
 			public const string Verifier_ShouldSucceed_Help = "Verifier_ShouldSucceed_Help";
 			public const string Verifier_Title = "Verifier_Title";

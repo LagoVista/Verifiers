@@ -168,6 +168,12 @@
   <data name="Verifier_InputType_Text" xml:space="preserve">
     <value>Text</value>
   </data>
+  <data name="Verifier_PathAndQueryString" xml:space="preserve">
+    <value>Path and Query String</value>
+  </data>
+  <data name="Verifier_PathAndQueryString_Help" xml:space="preserve">
+    <value>You can provide a path and query string to test the expression. </value>
+  </data>
   <data name="Verifier_ShouldSucceed" xml:space="preserve">
     <value>Should Succeed</value>
   </data>
