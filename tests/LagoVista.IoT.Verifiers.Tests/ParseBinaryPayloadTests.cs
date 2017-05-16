@@ -1,11 +1,8 @@
-﻿using LagoVista.IoT.Verifiers.Models;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+using LagoVista.IoT.Verifiers.Models;
 
-namespace LagoVista.IoT.Verifiers.Tests.Misc
+namespace LagoVista.IoT.Verifiers.Tests
 {
     [TestClass]
     public class ParseBinaryPayloadTests

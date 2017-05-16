@@ -7,6 +7,7 @@ using System.Diagnostics;
 using LagoVista.IoT.Verifiers.Utils;
 using LagoVista.IoT.Runtime.Core.Module;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
+using LagoVista.IoT.DeviceMessaging.Admin.Models;
 
 namespace LagoVista.IoT.Verifiers.Runtime
 {
@@ -20,7 +21,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
 
         }
 
-        public Task<VerificationResult> VerifyAsync(VerificationRequest<MessageFieldParserConfiguration> request)
+        public Task<VerificationResult> VerifyAsync(VerificationRequest<DeviceMessageDefinitionField> request)
         {
             var sw = new Stopwatch();
 

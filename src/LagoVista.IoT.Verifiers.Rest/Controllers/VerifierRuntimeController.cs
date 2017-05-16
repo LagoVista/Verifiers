@@ -1,4 +1,5 @@
 ﻿using LagoVista.Core.PlatformSupport;
+using LagoVista.IoT.DeviceMessaging.Admin.Models;
 using LagoVista.IoT.Pipeline.Admin.Models;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Runtime.Core.Module;
@@ -27,7 +28,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         }
 
         [HttpPost("verifierruntime/execute")]
-        public Task<VerificationResult> VerifyFieldParser([FromBody] VerificationRequest<MessageFieldParserConfiguration> verificationRequest)
+        public Task<VerificationResult> VerifyFieldParser([FromBody] VerificationRequest<DeviceMessageDefinitionField> verificationRequest)
         {            
             return _runtime.VerifyAsync(verificationRequest);
         }
