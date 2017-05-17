@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{20E1CAC8-8F0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A2BC5D31-6042-4BB3-B826-267AB544A5A3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LagoVista.IoT.Verifiers.Tests", "tests\LagoVista.IoT.Verifiers.Tests\LagoVista.IoT.Verifiers.Tests.csproj", "{CEA791A3-A38C-4A8D-9108-97B60EBF445C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{A9107A7C-6920-4782-8A7D-3A9F44A731B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9107A7C-6920-4782-8A7D-3A9F44A731B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9107A7C-6920-4782-8A7D-3A9F44A731B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA791A3-A38C-4A8D-9108-97B60EBF445C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA791A3-A38C-4A8D-9108-97B60EBF445C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA791A3-A38C-4A8D-9108-97B60EBF445C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA791A3-A38C-4A8D-9108-97B60EBF445C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 		{BAADE84F-5F6C-486A-B881-C0BE2C7A66EB} = {20E1CAC8-8F0A-42E5-B9D9-F7606C1D1036}
 		{BBFEB722-7D96-41CA-87B9-25F5FA256788} = {20E1CAC8-8F0A-42E5-B9D9-F7606C1D1036}
 		{A9107A7C-6920-4782-8A7D-3A9F44A731B4} = {20E1CAC8-8F0A-42E5-B9D9-F7606C1D1036}
+		{CEA791A3-A38C-4A8D-9108-97B60EBF445C} = {A2BC5D31-6042-4BB3-B826-267AB544A5A3}
 	EndGlobalSection
 EndGlobal
