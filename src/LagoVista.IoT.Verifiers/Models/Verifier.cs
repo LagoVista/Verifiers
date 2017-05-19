@@ -43,6 +43,7 @@ namespace LagoVista.IoT.Verifiers.Models
         public Verifier()
         {
             Headers = new Dictionary<string, string>();
+            ExpectedOutputs = new Dictionary<string, string>();
         }
 
         [FormField(LabelResource: VerifierResources.Names.Common_Key, HelpResource: VerifierResources.Names.Common_Key_Help, FieldType: FieldTypes.Key, RegExValidationMessageResource: VerifierResources.Names.Common_Key_Validation, ResourceType: typeof(VerifierResources), IsRequired: true)]
@@ -70,6 +71,10 @@ namespace LagoVista.IoT.Verifiers.Models
 
         [FormField(LabelResource: VerifierResources.Names.Verifier_ExpectedOutput, FieldType: FieldTypes.MultiLineText, IsRequired:true, ResourceType: typeof(VerifierResources))]
         public string ExpectedOutput { get; set; }
+
+        [FormField(LabelResource: VerifierResources.Names.Verifier_ExpectedOutput, FieldType: FieldTypes.MultiLineText, IsRequired: true, ResourceType: typeof(VerifierResources))]
+        public Dictionary<string, string> ExpectedOutputs { get; set; }
+
 
         public byte[] GetBinaryPayload()
         {

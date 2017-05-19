@@ -17,20 +17,27 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
 {
 
     [Authorize]
-    [Route("api")]
     public class VerifierRuntimeController : LagoVistaBaseController
     {
-        IFieldParserVerifierRuntime _runtime;        
+        IMessageParserVerifierRuntime _messageParserRuntime;
+        IFieldParserVerifierRuntime _fieldParserRuntime;
 
-        public VerifierRuntimeController(UserManager<AppUser> userManager, IFieldParserVerifierRuntime runtime, ILogger logger) : base(userManager, logger)
+        public VerifierRuntimeController(UserManager<AppUser> userManager, IMessageParserVerifierRuntime messageParserRuntime, IFieldParserVerifierRuntime fieldParserRuntime, ILogger logger) : base(userManager, logger)
         {
-            _runtime = runtime;
+            _messageParserRuntime = messageParserRuntime;
+            _fieldParserRuntime = fieldParserRuntime;
         }
 
-        [HttpPost("verifierruntime/execute")]
+        [HttpPost("/api/verifierruntime/fieldparser/execute")]
         public Task<VerificationResult> VerifyFieldParser([FromBody] VerificationRequest<DeviceMessageDefinitionField> verificationRequest)
         {            
-            return _runtime.VerifyAsync(verificationRequest);
+            return _fieldParserRuntime.VerifyAsync(verificationRequest);
+        }
+
+        [HttpPost("/api/verifierruntime/messageparser/execute")]
+        public Task<VerificationResult> VerifyMessageparser([FromBody] VerificationRequest<DeviceMessageDefinition> messageDefinition)
+        {
+            return _messageParserRuntime.VerifyAsync(messageDefinition);
         }
     }
 }

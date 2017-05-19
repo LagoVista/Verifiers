@@ -1,26 +1,26 @@
-﻿using LagoVista.IoT.Pipeline.Admin.Models;
-using LagoVista.IoT.Verifiers.Models;
+﻿using LagoVista.IoT.Runtime.Core.Module;
 using System;
-using System.Threading.Tasks;
 using LagoVista.Core;
-using System.Diagnostics;
-using LagoVista.IoT.Verifiers.Utils;
-using LagoVista.IoT.Runtime.Core.Module;
-using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.DeviceMessaging.Admin.Models;
+using LagoVista.IoT.Runtime.Core.Models.Verifiers;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using LagoVista.IoT.Verifiers.Models;
+using LagoVista.IoT.Verifiers.Utils;
 
 namespace LagoVista.IoT.Verifiers.Runtime
 {
-    public class FieldParserVerifierRuntime : IFieldParserVerifierRuntime
+    public class MessageParserVerifierRuntime : IMessageParserVerifierRuntime
     {
         IParserManager _parserManager;
 
-        public FieldParserVerifierRuntime(IParserManager parserManager)
+        public MessageParserVerifierRuntime(IParserManager parserManager)
         {
             _parserManager = parserManager;
         }
 
-        public Task<VerificationResult> VerifyAsync(VerificationRequest<DeviceMessageDefinitionField> request)
+
+        public Task<VerificationResult> VerifyAsync(VerificationRequest<DeviceMessageDefinition> request)
         {
             var sw = new Stopwatch();
 
@@ -34,7 +34,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
 
             var logger = new VerifierLogger();
 
-            var parser = _parserManager.GetFieldMessageParser(request.Configuration, logger);
+            var parser = _parserManager.GetMessageParser(request.Configuration, logger);
 
             sw.Start();
 
@@ -51,25 +51,26 @@ namespace LagoVista.IoT.Verifiers.Runtime
                     pem.TextPayload = verifier.Input;
                 }
 
-                var parseResult = parser.Parse(pem);
-                if (parseResult.Success)
+                var parseResult = parser.Parse(pem, request.Configuration);
+                if (parseResult.Successful)
                 {
-
-                    if (parseResult.Result != verifier.ExpectedOutput)
+                    foreach (var item in verifier.ExpectedOutputs)
                     {
-                        result.Success = false;
-                        if (!String.IsNullOrEmpty(parseResult.Result))
+                        if (pem.Envelope.Values.ContainsKey(item.Key))
                         {
-                            result.ErrorMessage = $"Expected [{verifier.ExpectedOutput}], Received [{parseResult.Result}]";
+                            if(pem.Envelope.Values[item.Key].Value == item.Value)
+                            {
+                                result.ErrorMessage = $"Expected [{verifier.ExpectedOutput}], Received [{item.Value}]";
+                            }
+                            else
+                            {
+                                result.ErrorMessage = $"Expected [{verifier.ExpectedOutput}], Received [-empty-]";
+                            }
                         }
                         else
                         {
-                            result.ErrorMessage = $"Expected [{verifier.ExpectedOutput}], Received [-empty-]";
+                            result.Success = false;
                         }
-                    }
-                    else
-                    {
-                        result.Success = parseResult.Success && result.Success;
                     }
                 }
                 else
