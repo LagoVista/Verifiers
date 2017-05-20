@@ -8,6 +8,7 @@ using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Verifiers.Resources;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace LagoVista.IoT.Verifiers.Models
@@ -42,8 +43,8 @@ namespace LagoVista.IoT.Verifiers.Models
 
         public Verifier()
         {
-            Headers = new Dictionary<string, string>();
-            ExpectedOutputs = new Dictionary<string, string>();
+            Headers = new ObservableCollection<Header>();
+            ExpectedOutputs = new ObservableCollection<ExpectedValue>();
         }
 
         [FormField(LabelResource: VerifierResources.Names.Common_Key, HelpResource: VerifierResources.Names.Common_Key_Help, FieldType: FieldTypes.Key, RegExValidationMessageResource: VerifierResources.Names.Common_Key_Validation, ResourceType: typeof(VerifierResources), IsRequired: true)]
@@ -58,7 +59,7 @@ namespace LagoVista.IoT.Verifiers.Models
         public bool ShouldSucceed { get; set; }
 
         [FormField(LabelResource: VerifierResources.Names.Verifier_Header, HelpResource: VerifierResources.Names.Verifier_Header_Help, ResourceType: typeof(VerifierResources),FieldType: FieldTypes.ChildList)]
-        public Dictionary<string, string> Headers { get; set; }
+        public ObservableCollection<Header> Headers { get; set; }
 
         [FormField(LabelResource: VerifierResources.Names.Verifier_PathAndQueryString, FieldType: FieldTypes.Text, HelpResource: VerifierResources.Names.Verifier_PathAndQueryString_Help, ResourceType: typeof(VerifierResources))]
         public String PathAndQueryString { get; set; }
@@ -73,7 +74,7 @@ namespace LagoVista.IoT.Verifiers.Models
         public string ExpectedOutput { get; set; }
 
         [FormField(LabelResource: VerifierResources.Names.Verifier_ExpectedOutput, FieldType: FieldTypes.MultiLineText, IsRequired: true, ResourceType: typeof(VerifierResources))]
-        public Dictionary<string, string> ExpectedOutputs { get; set; }
+        public ObservableCollection<ExpectedValue> ExpectedOutputs { get; set; }
 
 
         public byte[] GetBinaryPayload()

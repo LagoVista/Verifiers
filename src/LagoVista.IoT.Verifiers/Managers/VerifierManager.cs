@@ -25,6 +25,7 @@ namespace LagoVista.IoT.Verifiers.Managers
         {
             await AuthorizeAsync(verifier, AuthorizeActions.Create, user, org);
             ValidationCheck(verifier, Actions.Create);
+            await _verifierRepo.AddVerifierAsync(verifier);
             return InvokeResult.Success;
         }
 
@@ -64,6 +65,7 @@ namespace LagoVista.IoT.Verifiers.Managers
         {
             await AuthorizeAsync(verifier, AuthorizeActions.Update, user, org);
             ValidationCheck(verifier, Actions.Update);
+            await _verifierRepo.UpdateVerifierAsync(verifier);
             return InvokeResult.Success;
         }
     }
