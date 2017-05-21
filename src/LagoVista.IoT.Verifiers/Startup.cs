@@ -14,6 +14,7 @@ namespace LagoVista.IoT.Verifiers
         {
             services.AddTransient<IVerifierManager, VerifierManager>();
             services.AddTransient<IFieldParserVerifierRuntime, FieldParserVerifierRuntime>();
+            services.AddTransient<IMessageParserVerifierRuntime, MessageParserVerifierRuntime>();
         }
     }
 }
