@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace LagoVista.IoT.Verifiers.Tests.Helpers
 {
 
-    public class FakeParser : IMessageParser
+    public class FakeMessageParser : IMessageParser
     {
         public KeyValuePair<string, string>[] KVPs { get; set; }
 

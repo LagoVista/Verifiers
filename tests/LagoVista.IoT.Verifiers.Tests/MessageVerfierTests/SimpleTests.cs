@@ -11,13 +11,36 @@ using System.Threading.Tasks;
 using LagoVista.IoT.Verifiers.Repos;
 using System.Collections.Generic;
 using LagoVista.IoT.Verifiers.Tests.Helpers;
+using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 
 namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
 {
     [TestClass]
-    public class BinaryTests
+    public class SimpleTests
     {
         Mock<IVerifierResultRepo> _resultRepo;
+
+        private void WriteResults(VerificationResults resultSet)
+        {
+            Console.WriteLine("Succcess    : " + resultSet.Success);
+            Console.WriteLine("Iterations  : " + resultSet.IterationCompleted);
+            Console.WriteLine("ExecutionMS : " + resultSet.ExecutionTimeMS);
+
+            foreach (var result in resultSet.Results)
+            {
+                Console.WriteLine($"Key:      {result.Key}");
+                Console.WriteLine($" - Success:  {result.Success}");
+                Console.WriteLine($" - Expected: {result.Expected}");
+                Console.WriteLine($" - Actual: {result.Actual}");
+                Console.WriteLine("  ");
+            }
+
+            foreach(var err in resultSet.ErrorMessage)
+            {
+                Console.WriteLine(err);
+            }
+        }
+
 
         [TestInitialize]
         public void Init()
@@ -27,7 +50,7 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
         
         private IParserManager GetParserManager(params KeyValuePair<string, string>[] kvps)
         {
-            var fakeParser = new FakeParser();
+            var fakeParser = new FakeMessageParser();
             var mockParserMgr = new Moq.Mock<IParserManager>();
             mockParserMgr.Setup(prs => prs.GetMessageParser(It.IsAny<DeviceMessageDefinition>(), It.IsAny<ILogger>())).Returns(fakeParser);
             fakeParser.KVPs = kvps;
@@ -35,7 +58,7 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
         }
 
         [TestMethod]
-        public async Task Verfier_BinaryTest_Valid()
+        public async Task Verfier_Message_SimpleTest_Valid()
         {
             var msgDefinition = new DeviceMessageDefinition();
 
@@ -50,7 +73,6 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
             verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key1", Value = "5" });
             verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key2", Value = "value1" });
 
-
             var verifiers = new MessageParserVerifierRuntime(parserMgr, _resultRepo.Object);
             var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinition>()
             {
@@ -58,15 +80,14 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
                 Configuration = msgDefinition
             }, null);
 
-            Console.WriteLine(result.ErrorMessage);
-            Console.WriteLine(result.ExecutionTimeMS);
+            WriteResults(result);
 
             Assert.IsTrue(result.Success);
+            Assert.AreEqual(1, result.IterationCompleted);
         }
 
-
         [TestMethod]
-        public async Task Verifier_BinaryTest_Invalid()
+        public async Task Verifier_Message_SimpleTest_Invalid()
         {
             var msgDefinition = new DeviceMessageDefinition();
             
@@ -84,14 +105,12 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
             {
                 Verifier = verifier,
                 Configuration = msgDefinition
-            });
+            }, null);
 
-            Console.WriteLine(result.ErrorMessage);
-            Console.WriteLine(result.ExecutionTimeMS);
+            WriteResults(result);
 
             Assert.IsFalse(result.Success);
+            Assert.AreEqual(1, result.IterationCompleted);
         }
-
-
     }
 }

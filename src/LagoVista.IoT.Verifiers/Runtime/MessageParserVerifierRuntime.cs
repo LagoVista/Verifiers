@@ -118,7 +118,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
                                 result.Results.Add(new VerificationResult()
                                 {
                                     Key = item.Key,
-                                    Expected = verifier.ExpectedOutput,
+                                    Expected = item.Value,
                                     Actual = String.IsNullOrEmpty(actualValue) ? "-empty-" : actualValue,
                                     Success = true,
                                 });
@@ -128,7 +128,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
                                 var verificationResult = new VerificationResult()
                                 {
                                     Key = item.Key,
-                                    Expected = verifier.ExpectedOutput,
+                                    Expected = item.Value,
                                     Actual = String.IsNullOrEmpty(actualValue) ? "-empty-" : actualValue,
                                     Success = false,
                                 };
@@ -149,6 +149,8 @@ namespace LagoVista.IoT.Verifiers.Runtime
                 {
                     result.Success = false;
                 }
+
+                result.IterationCompleted++;
 
                 if (!result.Success)
                 {

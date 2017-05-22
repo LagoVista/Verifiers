@@ -27,11 +27,42 @@ namespace LagoVista.IoT.Verifiers.Runtime
 
         public async Task<VerificationResults> VerifyAsync(VerificationRequest<DeviceMessageDefinitionField> request, EntityHeader requestedBy)
         {
-            var sw = new Stopwatch();
-
             var verifier = request.Verifier as Verifier;
 
             var result = new VerificationResults(request.Configuration.Id);
+
+            if (String.IsNullOrEmpty(verifier.Input))
+            {
+                result.ErrorMessage.Add(VerifierResources.Verifier_MissingInput);
+                result.Success = false;
+                await _resultRepo.AddResultAsync(result);
+                return result;
+            }
+
+            if (EntityHeader.IsNullOrEmpty(verifier.InputType))
+            {
+                result.ErrorMessage.Add(VerifierResources.Verifier_MissingInputType);
+                result.Success = false;
+                await _resultRepo.AddResultAsync(result);
+                return result;
+            }
+
+            if(String.IsNullOrEmpty(verifier.ExpectedOutput))
+            {
+                result.ErrorMessage.Add(VerifierResources.Verifier_MissingInput);
+                result.Success = false;
+                await _resultRepo.AddResultAsync(result);
+                return result;
+            }
+
+            if (request.Iterations == 0)
+            {
+                result.ErrorMessage.Add(VerifierResources.Verifier_IterationCountZero);
+                result.Success = false;
+                await _resultRepo.AddResultAsync(result);
+                return result;
+            }
+            
             result.ComponentId = request.Configuration.Id;
             var start = DateTime.Now;
             result.DateStamp = start.ToJSONString();
@@ -42,6 +73,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
 
             var parser = _parserManager.GetFieldMessageParser(request.Configuration, logger);
 
+            var sw = new Stopwatch();
             sw.Start();
 
             for (var idx = 0; idx < request.Iterations; ++idx)
