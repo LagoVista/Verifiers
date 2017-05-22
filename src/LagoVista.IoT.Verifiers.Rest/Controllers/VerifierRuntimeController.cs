@@ -1,6 +1,5 @@
 ﻿using LagoVista.Core.PlatformSupport;
 using LagoVista.IoT.DeviceMessaging.Admin.Models;
-using LagoVista.IoT.Pipeline.Admin.Models;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Runtime.Core.Module;
 using LagoVista.IoT.Web.Common.Controllers;
@@ -8,9 +7,6 @@ using LagoVista.UserAdmin.Models.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.IoT.Verifiers.Rest.Controllers
@@ -29,15 +25,15 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         }
 
         [HttpPost("/api/verifierruntime/fieldparser/execute")]
-        public Task<VerificationResult> VerifyFieldParser([FromBody] VerificationRequest<DeviceMessageDefinitionField> verificationRequest)
+        public Task<VerificationResults> VerifyFieldParser([FromBody] VerificationRequest<DeviceMessageDefinitionField> verificationRequest)
         {            
-            return _fieldParserRuntime.VerifyAsync(verificationRequest);
+            return _fieldParserRuntime.VerifyAsync(verificationRequest, UserEntityHeader);
         }
 
         [HttpPost("/api/verifierruntime/messageparser/execute")]
-        public Task<VerificationResult> VerifyMessageparser([FromBody] VerificationRequest<DeviceMessageDefinition> messageDefinition)
+        public Task<VerificationResults> VerifyMessageparser([FromBody] VerificationRequest<DeviceMessageDefinition> messageDefinition)
         {
-            return _messageParserRuntime.VerifyAsync(messageDefinition);
+            return _messageParserRuntime.VerifyAsync(messageDefinition, UserEntityHeader);
         }
     }
 }

@@ -71,9 +71,31 @@ namespace LagoVista.IoT.Verifiers.Resources
 //Resources:VerifierResources:Common_Name
 
 		public static string Common_Name { get { return GetResourceString("Common_Name"); } }
+//Resources:VerifierResources:Verifier_Aborted
+
+
+		///<summary>
+		///Will append number of iterations completed to messages
+		///</summary>
+		public static string Verifier_Aborted { get { return GetResourceString("Verifier_Aborted"); } }
+//Resources:VerifierResources:Verifier_Actual
+
+		public static string Verifier_Actual { get { return GetResourceString("Verifier_Actual"); } }
+//Resources:VerifierResources:Verifier_Component
+
+		public static string Verifier_Component { get { return GetResourceString("Verifier_Component"); } }
 //Resources:VerifierResources:Verifier_Description
 
 		public static string Verifier_Description { get { return GetResourceString("Verifier_Description"); } }
+//Resources:VerifierResources:Verifier_Empty
+
+		public static string Verifier_Empty { get { return GetResourceString("Verifier_Empty"); } }
+//Resources:VerifierResources:Verifier_Expected
+
+		public static string Verifier_Expected { get { return GetResourceString("Verifier_Expected"); } }
+//Resources:VerifierResources:Verifier_Expected_NotMatch_Actual
+
+		public static string Verifier_Expected_NotMatch_Actual { get { return GetResourceString("Verifier_Expected_NotMatch_Actual"); } }
 //Resources:VerifierResources:Verifier_ExpectedOutput
 
 		public static string Verifier_ExpectedOutput { get { return GetResourceString("Verifier_ExpectedOutput"); } }
@@ -104,12 +126,37 @@ namespace LagoVista.IoT.Verifiers.Resources
 //Resources:VerifierResources:Verifier_InputType_Text
 
 		public static string Verifier_InputType_Text { get { return GetResourceString("Verifier_InputType_Text"); } }
+//Resources:VerifierResources:Verifier_IterationCountZero
+
+		public static string Verifier_IterationCountZero { get { return GetResourceString("Verifier_IterationCountZero"); } }
+//Resources:VerifierResources:Verifier_MissingExpectedOutput
+
+		public static string Verifier_MissingExpectedOutput { get { return GetResourceString("Verifier_MissingExpectedOutput"); } }
+//Resources:VerifierResources:Verifier_MissingExpectedOutputs
+
+		public static string Verifier_MissingExpectedOutputs { get { return GetResourceString("Verifier_MissingExpectedOutputs"); } }
+//Resources:VerifierResources:Verifier_MissingInput
+
+		public static string Verifier_MissingInput { get { return GetResourceString("Verifier_MissingInput"); } }
+//Resources:VerifierResources:Verifier_MissingInputType
+
+		public static string Verifier_MissingInputType { get { return GetResourceString("Verifier_MissingInputType"); } }
+//Resources:VerifierResources:Verifier_ParserFailed
+
+		public static string Verifier_ParserFailed { get { return GetResourceString("Verifier_ParserFailed"); } }
 //Resources:VerifierResources:Verifier_PathAndQueryString
 
 		public static string Verifier_PathAndQueryString { get { return GetResourceString("Verifier_PathAndQueryString"); } }
 //Resources:VerifierResources:Verifier_PathAndQueryString_Help
 
 		public static string Verifier_PathAndQueryString_Help { get { return GetResourceString("Verifier_PathAndQueryString_Help"); } }
+//Resources:VerifierResources:Verifier_ResultDoesNotContainKey
+
+
+		///<summary>
+		///Will append some additional text to message
+		///</summary>
+		public static string Verifier_ResultDoesNotContainKey { get { return GetResourceString("Verifier_ResultDoesNotContainKey"); } }
 //Resources:VerifierResources:Verifier_ShouldSucceed
 
 		public static string Verifier_ShouldSucceed { get { return GetResourceString("Verifier_ShouldSucceed"); } }
@@ -137,7 +184,13 @@ namespace LagoVista.IoT.Verifiers.Resources
 			public const string Common_Key_Help = "Common_Key_Help";
 			public const string Common_Key_Validation = "Common_Key_Validation";
 			public const string Common_Name = "Common_Name";
+			public const string Verifier_Aborted = "Verifier_Aborted";
+			public const string Verifier_Actual = "Verifier_Actual";
+			public const string Verifier_Component = "Verifier_Component";
 			public const string Verifier_Description = "Verifier_Description";
+			public const string Verifier_Empty = "Verifier_Empty";
+			public const string Verifier_Expected = "Verifier_Expected";
+			public const string Verifier_Expected_NotMatch_Actual = "Verifier_Expected_NotMatch_Actual";
 			public const string Verifier_ExpectedOutput = "Verifier_ExpectedOutput";
 			public const string Verifier_Header = "Verifier_Header";
 			public const string Verifier_Header_Help = "Verifier_Header_Help";
@@ -148,8 +201,15 @@ namespace LagoVista.IoT.Verifiers.Resources
 			public const string Verifier_InputType_Help = "Verifier_InputType_Help";
 			public const string Verifier_InputType_Select = "Verifier_InputType_Select";
 			public const string Verifier_InputType_Text = "Verifier_InputType_Text";
+			public const string Verifier_IterationCountZero = "Verifier_IterationCountZero";
+			public const string Verifier_MissingExpectedOutput = "Verifier_MissingExpectedOutput";
+			public const string Verifier_MissingExpectedOutputs = "Verifier_MissingExpectedOutputs";
+			public const string Verifier_MissingInput = "Verifier_MissingInput";
+			public const string Verifier_MissingInputType = "Verifier_MissingInputType";
+			public const string Verifier_ParserFailed = "Verifier_ParserFailed";
 			public const string Verifier_PathAndQueryString = "Verifier_PathAndQueryString";
 			public const string Verifier_PathAndQueryString_Help = "Verifier_PathAndQueryString_Help";
+			public const string Verifier_ResultDoesNotContainKey = "Verifier_ResultDoesNotContainKey";
 			public const string Verifier_ShouldSucceed = "Verifier_ShouldSucceed";
 			public const string Verifier_ShouldSucceed_Help = "Verifier_ShouldSucceed_Help";
 			public const string Verifier_Title = "Verifier_Title";

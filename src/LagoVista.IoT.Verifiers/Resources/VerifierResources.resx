@@ -135,11 +135,30 @@
   <data name="Common_Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Verifier_Aborted" xml:space="preserve">
+    <value>Aborted after completing interations:</value>
+    <comment>Will append number of iterations completed to messages</comment>
+  </data>
+  <data name="Verifier_Actual" xml:space="preserve">
+    <value>Actual:</value>
+  </data>
+  <data name="Verifier_Component" xml:space="preserve">
+    <value>Component</value>
+  </data>
   <data name="Verifier_Description" xml:space="preserve">
     <value>You can add Verifiers to certain components of your deployment.  A verifier can be thought of as a test that can be ran against certain components to verifiy they behave the way you expect.</value>
   </data>
+  <data name="Verifier_Empty" xml:space="preserve">
+    <value>-empty-</value>
+  </data>
+  <data name="Verifier_Expected" xml:space="preserve">
+    <value>Expected:</value>
+  </data>
   <data name="Verifier_ExpectedOutput" xml:space="preserve">
     <value>Expected Output</value>
+  </data>
+  <data name="Verifier_Expected_NotMatch_Actual" xml:space="preserve">
+    <value>Expected Value does not match Actual Value</value>
   </data>
   <data name="Verifier_Header" xml:space="preserve">
     <value>Message Headers </value>
@@ -168,11 +187,33 @@
   <data name="Verifier_InputType_Text" xml:space="preserve">
     <value>Text</value>
   </data>
+  <data name="Verifier_IterationCountZero" xml:space="preserve">
+    <value>Nothing to do, interation count was zero</value>
+  </data>
+  <data name="Verifier_MissingExpectedOutput" xml:space="preserve">
+    <value>Missing Expected Output</value>
+  </data>
+  <data name="Verifier_MissingExpectedOutputs" xml:space="preserve">
+    <value>Missing Expected Outputs</value>
+  </data>
+  <data name="Verifier_MissingInput" xml:space="preserve">
+    <value>Input is required.</value>
+  </data>
+  <data name="Verifier_MissingInputType" xml:space="preserve">
+    <value>Missing Input Type</value>
+  </data>
+  <data name="Verifier_ParserFailed" xml:space="preserve">
+    <value>Parser Failed</value>
+  </data>
   <data name="Verifier_PathAndQueryString" xml:space="preserve">
     <value>Path and Query String</value>
   </data>
   <data name="Verifier_PathAndQueryString_Help" xml:space="preserve">
     <value>You can provide a path and query string to test the expression. </value>
+  </data>
+  <data name="Verifier_ResultDoesNotContainKey" xml:space="preserve">
+    <value>Result set does not contain key:</value>
+    <comment>Will append some additional text to message</comment>
   </data>
   <data name="Verifier_ShouldSucceed" xml:space="preserve">
     <value>Should Succeed</value>

@@ -5,10 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LagoVista.IoT.Verifiers.Tests
 {
     [TestClass]
-    public class ParseBinaryPayloadTests
+    public class BinaryMessageCreatorTests
     {
         [TestMethod]
-        public void TestParsingOfMessage()
+        public void BinaryMessage_CreaateFromString()
         {
             var verifier = new Verifier();
             verifier.Input = "3A 4C 54 6A 32 FF 47";

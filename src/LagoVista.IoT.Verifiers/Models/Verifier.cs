@@ -64,7 +64,7 @@ namespace LagoVista.IoT.Verifiers.Models
         [FormField(LabelResource: VerifierResources.Names.Verifier_PathAndQueryString, FieldType: FieldTypes.Text, HelpResource: VerifierResources.Names.Verifier_PathAndQueryString_Help, ResourceType: typeof(VerifierResources))]
         public String PathAndQueryString { get; set; }
 
-        [FormField(LabelResource: VerifierResources.Names.Verifier_Input, FieldType: FieldTypes.MultiLineText, IsRequired: true, ResourceType: typeof(VerifierResources))]
+        [FormField(LabelResource: VerifierResources.Names.Verifier_Component, FieldType: FieldTypes.EntityHeaderPicker, IsRequired: true, ResourceType: typeof(VerifierResources))]
         public EntityHeader Component { get; set; }
 
         [FormField(LabelResource: VerifierResources.Names.Verifier_Input, FieldType: FieldTypes.MultiLineText, IsRequired: true, ResourceType: typeof(VerifierResources))]

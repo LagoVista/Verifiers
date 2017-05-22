@@ -9,8 +9,8 @@ namespace LagoVista.IoT.Verifiers.Repos
 {
     public interface IVerifierResultRepo
     {
-        Task AddResultAsync(VerificationResult result);
+        Task AddResultAsync(VerificationResults result);
 
-        Task<IEnumerable<VerificationResult>> GetResultsForComponentAsync(string componentId);
+        Task<IEnumerable<VerificationResults>> GetResultsForComponentAsync(string componentId);
     }
 }
