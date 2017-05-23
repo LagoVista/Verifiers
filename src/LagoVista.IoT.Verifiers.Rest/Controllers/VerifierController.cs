@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using LagoVista.Core;
 using LagoVista.Core.Validation;
-using LagoVista.IoT.Verifiers.Models;
 using System.Threading.Tasks;
 using LagoVista.Core.Models.UIMetaData;
+using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 
 namespace LagoVista.IoT.Verifiers.Rest.Controllers
 {

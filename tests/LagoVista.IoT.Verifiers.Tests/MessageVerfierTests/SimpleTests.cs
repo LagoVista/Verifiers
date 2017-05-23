@@ -3,7 +3,6 @@ using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.IoT.DeviceMessaging.Admin.Models;
 using LagoVista.IoT.Runtime.Core.Module;
-using LagoVista.IoT.Verifiers.Models;
 using LagoVista.IoT.Verifiers.Runtime;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -65,7 +64,7 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
             var parserMgr = GetParserManager(new KeyValuePair<string, string>("key1", "5"), new KeyValuePair<string, string>("key2", "value1"));
 
             var verifier = new Verifier();
-            verifier.Headers.Add(new Models.Header() { Name = "field1", Value = "value1" });
+            verifier.Headers.Add(new Header() { Name = "field1", Value = "value1" });
             verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
             verifier.ShouldSucceed = true;
             verifier.InputType = EntityHeader<InputTypes>.Create(InputTypes.Binary);

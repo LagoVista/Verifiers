@@ -6,8 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using LagoVista.Core.Models;
+using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.Core.Validation;
-using LagoVista.IoT.Verifiers.Models;
 using System.Threading.Tasks;
 using static LagoVista.Core.Models.AuthorizeResult;
 

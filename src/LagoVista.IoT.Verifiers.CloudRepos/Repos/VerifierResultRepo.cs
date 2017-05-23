@@ -1,5 +1,4 @@
 ﻿using LagoVista.IoT.Verifiers.Repos;
-using LagoVista.IoT.Verifiers.Models;
 using System.Threading.Tasks;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.CloudStorage.Storage;

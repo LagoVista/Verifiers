@@ -1,7 +1,5 @@
-﻿using LagoVista.IoT.Verifiers.Models;
-using System;
+﻿using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.IoT.Verifiers.Repos

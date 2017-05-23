@@ -5,7 +5,6 @@ using LagoVista.IoT.DeviceMessaging.Admin.Models;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using LagoVista.IoT.Verifiers.Models;
 using LagoVista.IoT.Verifiers.Utils;
 using LagoVista.IoT.Verifiers.Repos;
 using LagoVista.IoT.Verifiers.Resources;

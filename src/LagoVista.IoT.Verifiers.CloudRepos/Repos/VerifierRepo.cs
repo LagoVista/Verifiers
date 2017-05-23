@@ -4,8 +4,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using LagoVista.IoT.Verifiers.Models;
 using LagoVista.IoT.Verifiers.Repos;
+using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 
 namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
 {

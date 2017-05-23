@@ -1,5 +1,4 @@
 ﻿using LagoVista.IoT.Runtime.Core.Models.Verifiers;
-using LagoVista.IoT.Verifiers.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

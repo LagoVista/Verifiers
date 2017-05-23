@@ -1,6 +1,6 @@
 ﻿using System;
-using LagoVista.IoT.Verifiers.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 
 namespace LagoVista.IoT.Verifiers.Tests
 {
