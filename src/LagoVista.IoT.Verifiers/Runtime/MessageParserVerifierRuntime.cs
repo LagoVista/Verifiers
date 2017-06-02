@@ -69,7 +69,8 @@ namespace LagoVista.IoT.Verifiers.Runtime
             result.DateStamp = start.ToJSONString();
             result.Success = true;
 
-            var logger = new VerifierLogger();
+            /* TODO: Need to think this through we are using the same parser we are for instances, do we care about logging this? */
+            var logger = new VerifierLogger(null, null, null, null);
 
             var parser = _parserManager.GetMessageParser(request.Configuration, logger);
 

@@ -1,35 +1,83 @@
 ﻿using LagoVista.Core.PlatformSupport;
+using LagoVista.IoT.Logging.Loggers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using LagoVista.IoT.Logging;
 
 namespace LagoVista.IoT.Verifiers.Utils
 {
-    public class VerifierLogger : ILogger
+    public class VerifierLogger : IInstanceLogger
     {
-        public void Log(LogLevel level, string area, string message, params KeyValuePair<string, string>[] args)
+        private String _instanceInstrumentationKey;
+        private String _deviceInstrumentationKey;
+        private String _hostId;
+        private String _instanceId;
+
+        public VerifierLogger(String hostId, string instanceId, string instanceInstrumentionKey, string deviceInstrumentationKey)
+        {
+            _instanceInstrumentationKey = InstanceInstrumentationKey;
+            _deviceInstrumentationKey = deviceInstrumentationKey;
+            _hostId = hostId;
+            _instanceId = instanceId;
+        }
+
+        public string InstanceInstrumentationKey => _instanceInstrumentationKey;
+
+        public string DeviceInstrumentationKey => _deviceInstrumentationKey;
+
+        public string HostId => _hostId;
+
+        public string InstanceId => _instanceId;
+
+        public void AddConfigurationError(string tag, string message, params KeyValuePair<string, string>[] args)
         {
             
         }
 
-        public void LogException(string area, Exception ex, params KeyValuePair<string, string>[] args)
+        public void AddCustomEvent(LogLevel level, string tag, string customEvent, params KeyValuePair<string, string>[] args)
         {
-            
+         
         }
 
-        public void SetKeys(params string[] args)
+        public void AddError(string tag, string message, params KeyValuePair<string, string>[] args)
+        {
+         
+        }
+
+        public void AddError(ErrorCode errorCode, params KeyValuePair<string, string>[] args)
         { 
             
         }
 
-        public void SetUserId(string userId)
+        public void AddException(string tag, Exception ex, params KeyValuePair<string, string>[] args)
         {
             
         }
 
-        public void TrackEvent(string message, Dictionary<string, string> parameters)
+        public void AddMetric(string measure, double duration)
         {
-         
+            
+        }
+
+        public void AddMetric(string measure, TimeSpan duration)
+        {
+            
+        }
+
+        public void AddMetric(string measure, int count)
+        {
+            
+        }
+
+        public void Start()
+        {
+            
+        }
+
+        public void Stop()
+        {
+            
         }
     }
 }

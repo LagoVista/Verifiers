@@ -1,6 +1,7 @@
 ﻿using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.IoT.DeviceMessaging.Admin.Models;
+using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.Runtime.Core.Models.PEM;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Runtime.Core.Module;
@@ -57,7 +58,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
             });
 
             var mockParserMgr = new Moq.Mock<IParserManager>();
-            mockParserMgr.Setup(prs => prs.GetFieldMessageParser(It.IsAny<DeviceMessageDefinitionField>(), It.IsAny<ILogger>())).Returns(fakeParser.Object);
+            mockParserMgr.Setup(prs => prs.GetFieldMessageParser(It.IsAny<DeviceMessageDefinitionField>(), It.IsAny<IInstanceLogger>())).Returns(fakeParser.Object);
             return mockParserMgr.Object;
         }
 

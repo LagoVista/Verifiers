@@ -11,6 +11,7 @@ using LagoVista.IoT.Verifiers.Repos;
 using System.Collections.Generic;
 using LagoVista.IoT.Verifiers.Tests.Helpers;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
+using LagoVista.IoT.Logging.Loggers;
 
 namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
 {
@@ -51,7 +52,7 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
         {
             var fakeParser = new FakeMessageParser();
             var mockParserMgr = new Moq.Mock<IParserManager>();
-            mockParserMgr.Setup(prs => prs.GetMessageParser(It.IsAny<DeviceMessageDefinition>(), It.IsAny<ILogger>())).Returns(fakeParser);
+            mockParserMgr.Setup(prs => prs.GetMessageParser(It.IsAny<DeviceMessageDefinition>(), It.IsAny<IInstanceLogger>())).Returns(fakeParser);
             fakeParser.KVPs = kvps;
             return mockParserMgr.Object;
         }

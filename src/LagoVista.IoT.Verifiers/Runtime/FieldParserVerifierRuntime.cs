@@ -9,6 +9,7 @@ using LagoVista.IoT.DeviceMessaging.Admin.Models;
 using LagoVista.IoT.Verifiers.Resources;
 using LagoVista.IoT.Verifiers.Repos;
 using LagoVista.Core.Models;
+using LagoVista.IoT.Logging.Loggers;
 
 namespace LagoVista.IoT.Verifiers.Runtime
 {
@@ -67,7 +68,8 @@ namespace LagoVista.IoT.Verifiers.Runtime
             result.Success = true;
             result.RequestedBy = requestedBy;
 
-            var logger = new VerifierLogger();
+            /* TODO: Need to think this through we are using the same parser we are for instances, do we care about logging this? */
+            var logger = new VerifierLogger(null, null, null, null);
 
             var parser = _parserManager.GetFieldMessageParser(request.Configuration, logger);
 
