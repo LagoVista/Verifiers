@@ -12,6 +12,7 @@ using LagoVista.Core.Validation;
 using System.Threading.Tasks;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
+using LagoVista.IoT.Logging.Loggers;
 
 namespace LagoVista.IoT.Verifiers.Rest.Controllers
 {
@@ -20,7 +21,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
     public class VerifierController : LagoVistaBaseController
     {
         IVerifierManager _verifierManager;
-        public VerifierController(UserManager<AppUser> userManager, IVerifierManager verifierManager, ILogger logger) : base(userManager, logger)
+        public VerifierController(UserManager<AppUser> userManager, IVerifierManager verifierManager, IAdminLogger logger) : base(userManager, logger)
         {
             _verifierManager = verifierManager;
         }

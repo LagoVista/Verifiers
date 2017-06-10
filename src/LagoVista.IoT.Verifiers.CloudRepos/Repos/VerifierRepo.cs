@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LagoVista.IoT.Verifiers.Repos;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
+using LagoVista.IoT.Logging.Loggers;
 
 namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
 {
@@ -13,7 +14,7 @@ namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
     {
         private bool _shouldConsolidateCollections;
 
-        public VerifierRepo(IVerifierSettings repoSettings, ILogger logger) : base(repoSettings.VerifiersDocDbStorage.Uri, repoSettings.VerifiersDocDbStorage.AccessKey, repoSettings.VerifiersDocDbStorage.ResourceName, logger)
+        public VerifierRepo(IVerifierSettings repoSettings, IAdminLogger logger) : base(repoSettings.VerifiersDocDbStorage.Uri, repoSettings.VerifiersDocDbStorage.AccessKey, repoSettings.VerifiersDocDbStorage.ResourceName, logger)
         {
             _shouldConsolidateCollections = repoSettings.ShouldConsolidateCollections;
         }

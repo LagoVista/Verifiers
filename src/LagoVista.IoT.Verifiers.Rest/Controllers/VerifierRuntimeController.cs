@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.PlatformSupport;
 using LagoVista.IoT.DeviceMessaging.Admin.Models;
+using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Runtime.Core.Module;
 using LagoVista.IoT.Web.Common.Controllers;
@@ -18,7 +19,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         IMessageParserVerifierRuntime _messageParserRuntime;
         IFieldParserVerifierRuntime _fieldParserRuntime;
 
-        public VerifierRuntimeController(UserManager<AppUser> userManager, IMessageParserVerifierRuntime messageParserRuntime, IFieldParserVerifierRuntime fieldParserRuntime, ILogger logger) : base(userManager, logger)
+        public VerifierRuntimeController(UserManager<AppUser> userManager, IMessageParserVerifierRuntime messageParserRuntime, IFieldParserVerifierRuntime fieldParserRuntime, IAdminLogger logger) : base(userManager, logger)
         {
             _messageParserRuntime = messageParserRuntime;
             _fieldParserRuntime = fieldParserRuntime;

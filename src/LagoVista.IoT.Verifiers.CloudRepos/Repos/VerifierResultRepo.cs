@@ -4,12 +4,13 @@ using LagoVista.Core.PlatformSupport;
 using LagoVista.CloudStorage.Storage;
 using System.Collections.Generic;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
+using LagoVista.IoT.Logging.Loggers;
 
 namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
 {
     public class VerifierResultRepo : LagoVista.CloudStorage.Storage.TableStorageBase<VerificationResults>, IVerifierResultRepo
     {
-        public VerifierResultRepo(IVerifierSettings verifierSettings, ILogger logger) : base(verifierSettings.VerifiersTableStorage.AccountId, verifierSettings.VerifiersTableStorage.AccessKey, logger)
+        public VerifierResultRepo(IVerifierSettings verifierSettings, IAdminLogger logger) : base(verifierSettings.VerifiersTableStorage.AccountId, verifierSettings.VerifiersTableStorage.AccessKey, logger)
         {
 
         }

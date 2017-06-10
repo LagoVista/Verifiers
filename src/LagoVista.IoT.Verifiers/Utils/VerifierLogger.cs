@@ -32,50 +32,74 @@ namespace LagoVista.IoT.Verifiers.Utils
 
         public void AddConfigurationError(string tag, string message, params KeyValuePair<string, string>[] args)
         {
-            
+
         }
 
         public void AddCustomEvent(LogLevel level, string tag, string customEvent, params KeyValuePair<string, string>[] args)
         {
-         
+
         }
 
         public void AddError(string tag, string message, params KeyValuePair<string, string>[] args)
         {
-         
+
         }
 
         public void AddError(ErrorCode errorCode, params KeyValuePair<string, string>[] args)
-        { 
-            
+        {
+
         }
 
         public void AddException(string tag, Exception ex, params KeyValuePair<string, string>[] args)
         {
-            
+
+        }
+
+        public void AddKVPs(params KeyValuePair<string, string>[] args)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddMetric(string measure, double duration)
         {
-            
+
         }
 
         public void AddMetric(string measure, TimeSpan duration)
         {
-            
+
         }
 
         public void AddMetric(string measure, int count)
         {
-            
+
+        }
+
+        public void EndTimedEvent(TimedEvent evt)
+        {
+        }
+
+        public void SetUserId(string userId)
+        {
+          
         }
 
         public void Start()
         {
-            
+
+        }
+
+        public TimedEvent StartTimedEvent(string area, string description)
+        {
+            return new TimedEvent(area, description);
         }
 
         public void Stop()
+        {
+
+        }
+
+        public void TrackEvent(string message, Dictionary<string, string> parameters)
         {
             
         }
