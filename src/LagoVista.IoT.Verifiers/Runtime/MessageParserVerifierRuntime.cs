@@ -9,6 +9,8 @@ using LagoVista.IoT.Verifiers.Utils;
 using LagoVista.IoT.Verifiers.Repos;
 using LagoVista.IoT.Verifiers.Resources;
 using LagoVista.Core.Models;
+using static LagoVista.IoT.DeviceAdmin.Models.InputCommand;
+using LagoVista.IoT.Runtime.Core.Models.PEM;
 
 namespace LagoVista.IoT.Verifiers.Runtime
 {
@@ -79,13 +81,13 @@ namespace LagoVista.IoT.Verifiers.Runtime
             for (var idx = 0; idx < request.Iterations; ++idx)
             {
                 var pem = new IoT.Runtime.Core.Models.PEM.PipelineExectionMessage();
-                pem.PayloadType = verifier.InputType.Id == Verifier.InputType_Text ? IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Text : IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Binary;
-                if (pem.PayloadType == IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Binary)
+                pem.PayloadType = EntityHeader<MessagePayloadTypes>.Create(verifier.InputType.Value == InputTypes.Text ? IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Text : IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Binary);
+                if (pem.PayloadType.Value == IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Binary)
                 {
                     pem.BinaryPayload = verifier.GetBinaryPayload();
                     if (pem.BinaryPayload == null || pem.BinaryPayload.Length == 0)
                     {
-                        result.ErrorMessage.Add(VerifierResources.Verifier_MissingInput);
+                        result.ErrorMessage.Add(VerifierResources.Verifier_MissingInput);   
                         result.Success = false;
                         await _resultRepo.AddResultAsync(result);
                         return result;

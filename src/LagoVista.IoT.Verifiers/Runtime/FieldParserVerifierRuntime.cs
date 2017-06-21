@@ -10,6 +10,7 @@ using LagoVista.IoT.Verifiers.Resources;
 using LagoVista.IoT.Verifiers.Repos;
 using LagoVista.Core.Models;
 using LagoVista.IoT.Logging.Loggers;
+using LagoVista.IoT.Runtime.Core.Models.PEM;
 
 namespace LagoVista.IoT.Verifiers.Runtime
 {
@@ -79,8 +80,8 @@ namespace LagoVista.IoT.Verifiers.Runtime
             for (var idx = 0; idx < request.Iterations; ++idx)
             {
                 var pem = new IoT.Runtime.Core.Models.PEM.PipelineExectionMessage();
-                pem.PayloadType = verifier.InputType.Id == Verifier.InputType_Text ? IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Text : IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Binary;
-                if (pem.PayloadType == IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Binary)
+                pem.PayloadType = EntityHeader<MessagePayloadTypes>.Create(verifier.InputType.Value == InputTypes.Text ? IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Text : IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Binary);
+                if (pem.PayloadType.Value == IoT.Runtime.Core.Models.PEM.MessagePayloadTypes.Binary)
                 {
                     pem.BinaryPayload = verifier.GetBinaryPayload();
                 }
