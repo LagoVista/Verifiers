@@ -10,13 +10,14 @@ using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.Core.Validation;
 using System.Threading.Tasks;
 using static LagoVista.Core.Models.AuthorizeResult;
+using LagoVista.IoT.Logging.Loggers;
 
 namespace LagoVista.IoT.Verifiers.Managers
 {
     public class VerifierManager : ManagerBase, IVerifierManager
     {
         IVerifierRepo _verifierRepo;
-        public VerifierManager(IVerifierRepo verifierRepo, ILogger logger, IAppConfig appConfig, IDependencyManager depmanager, ISecurity security) : base(logger, appConfig, depmanager, security)
+        public VerifierManager(IVerifierRepo verifierRepo, IAdminLogger logger, IAppConfig appConfig, IDependencyManager depmanager, ISecurity security) : base(logger, appConfig, depmanager, security)
         {
             _verifierRepo = verifierRepo;
         }

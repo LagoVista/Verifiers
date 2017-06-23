@@ -1,6 +1,7 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.Managers;
 using LagoVista.Core.PlatformSupport;
+using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.Verifiers.Repos;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace LagoVista.IoT.Verifiers.Managers
     {
         IVerifierResultRepo _verifierResultRepo;
 
-        public VerifierRuntimeManager(IVerifierResultRepo verifierResultRepo, ILogger logger, IAppConfig appConfig, IDependencyManager depmanager, ISecurity security) : base(logger, appConfig, depmanager, security)
+        public VerifierRuntimeManager(IVerifierResultRepo verifierResultRepo, IAdminLogger logger, IAppConfig appConfig, IDependencyManager depmanager, ISecurity security) : base(logger, appConfig, depmanager, security)
         {
             _verifierResultRepo = verifierResultRepo;
         }
