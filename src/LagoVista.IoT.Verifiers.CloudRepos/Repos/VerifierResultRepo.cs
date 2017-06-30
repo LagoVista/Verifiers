@@ -8,21 +8,28 @@ using LagoVista.IoT.Logging.Loggers;
 
 namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
 {
-    public class VerifierResultRepo : LagoVista.CloudStorage.Storage.TableStorageBase<VerificationResults>, IVerifierResultRepo
+    public class VerifierResultRepo : LagoVista.CloudStorage.DocumentDB.DocumentDBRepoBase<VerificationResults>, IVerifierResultRepo
     {
-        public VerifierResultRepo(IVerifierSettings verifierSettings, IAdminLogger logger) : base(verifierSettings.VerifiersTableStorage.AccountId, verifierSettings.VerifiersTableStorage.AccessKey, logger)
-        {
+        bool _shouldConsolidateCollections;
 
+        public VerifierResultRepo(IVerifierSettings repoSettings, IAdminLogger logger) : base(repoSettings.VerifiersDocDbStorage.Uri, repoSettings.VerifiersDocDbStorage.AccessKey, repoSettings.VerifiersDocDbStorage.ResourceName, logger)
+        {
+            _shouldConsolidateCollections = repoSettings.ShouldConsolidateCollections;
         }
+
+        protected override bool IsRuntimeData {get {return true; } }
+
+        protected override bool ShouldConsolidateCollections => _shouldConsolidateCollections;
 
         public Task AddResultAsync(VerificationResults result)
         {
-            return InsertAsync(result);
+            return CreateDocumentAsync(result);
         }
 
-        public Task<IEnumerable<VerificationResults>> GetResultsForComponentAsync(string componentId)
+        public async Task<IEnumerable<VerificationResults>> GetResultsForComponentAsync(string componentId)
         {
-            return base.GetByFilterAsync(FilterOptions.Create("ComponentId", FilterOptions.Operators.Equals, componentId));
+            var items = await base.QueryAsync(qry => qry.Component.Id == componentId);
+            return items;
         }
     }
 }

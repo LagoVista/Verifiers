@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Logging.Loggers;
+using LagoVista.Core.Models;
 
 namespace LagoVista.IoT.Verifiers.Rest.Controllers
 {
@@ -67,13 +68,23 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// Verifier - Create New
         /// </summary>
         /// <returns></returns>
-        [HttpGet("verifier/factory")]
-        public DetailResponse<Verifier> CreateVerifierAsync(string id)
+        [HttpGet("verifier/factory/{type}")]
+        public DetailResponse<Verifier> CreateVerifierAsync(string type)
         {
             var verifier = new Verifier();
             verifier.Id = Guid.NewGuid().ToId();
             SetOwnedProperties(verifier);
             SetAuditProperties(verifier);
+
+            switch(type.ToLower())
+            {
+                case "message":
+                    verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageParser);
+                    break;
+                case "messagefield":
+                    verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
+                    break;
+            }
 
             return DetailResponse<Verifier>.Create(verifier);
         }

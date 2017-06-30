@@ -1,14 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.2</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="1.2.44-alpha0701" />
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin" Version="1.2.44-alpha0701" />
-    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Admin" Version="1.2.44-alpha0701" />
-    <PackageReference Include="LagoVista.IoT.Logging" Version="1.2.44-alpha0701" />
-    <PackageReference Include="LagoVista.IoT.Pipeline.Admin" Version="1.2.44-alpha0701" />
-    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="1.2.44-alpha0701" />
+    <PackageReference Include="LagoVista.Core" Version="1.2.44-alpha1316" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin" Version="1.2.44-alpha1316" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Admin" Version="1.2.44-alpha1316" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="1.2.44-alpha1316" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Admin" Version="1.2.44-alpha1316" />
+    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="1.2.44-alpha1316" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
@@ -26,5 +26,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\VerifierResources.resx">
+      <Generator>
+      </Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

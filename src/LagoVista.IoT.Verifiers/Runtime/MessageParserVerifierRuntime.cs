@@ -32,9 +32,12 @@ namespace LagoVista.IoT.Verifiers.Runtime
 
             var verifier = request.Verifier as Verifier;
 
-            var result = new VerificationResults(request.Configuration.Id);
+            var result = new VerificationResults(new EntityHeader() { Text = request.Configuration.Name, Id = request.Configuration.Id }, VerifierTypes.MessageParser);
 
-            if (String.IsNullOrEmpty(verifier.Input))
+            if (String.IsNullOrEmpty(verifier.Input) &&
+                String.IsNullOrEmpty(verifier.Topic) &&
+                String.IsNullOrEmpty(verifier.PathAndQueryString) &&
+                verifier.Headers.Count == 0) 
             {
                 result.ErrorMessage.Add(VerifierResources.Verifier_MissingInput);
                 result.Success = false;
@@ -66,7 +69,6 @@ namespace LagoVista.IoT.Verifiers.Runtime
                 return result;
             }
 
-            result.ComponentId = request.Configuration.Id;
             var start = DateTime.Now;
             result.DateStamp = start.ToJSONString();
             result.Success = true;
