@@ -45,7 +45,7 @@ namespace LagoVista.IoT.Verifiers.Managers
             return verifier;
         }
 
-        public async Task<IEnumerable<VerifierSummary>> GetVerifierForComponentAsync(string componentId, EntityHeader org, EntityHeader user)
+        public async Task<IEnumerable<Verifier>> GetVerifierForComponentAsync(string componentId, EntityHeader org, EntityHeader user)
         {
             await AuthorizeOrgAccess(user, org.Id, typeof(Verifier));
             return await _verifierRepo.GetVerifiersForComponentAsync(componentId);

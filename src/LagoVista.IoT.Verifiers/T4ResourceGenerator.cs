@@ -65,9 +65,18 @@ namespace LagoVista.IoT.Verifiers.Resources
 //Resources:VerifierResources:Verifier_Expected_NotMatch_Actual
 
 		public static string Verifier_Expected_NotMatch_Actual { get { return GetResourceString("Verifier_Expected_NotMatch_Actual"); } }
+//Resources:VerifierResources:Verifier_Field
+
+		public static string Verifier_Field { get { return GetResourceString("Verifier_Field"); } }
 //Resources:VerifierResources:Verifier_IterationCountZero
 
 		public static string Verifier_IterationCountZero { get { return GetResourceString("Verifier_IterationCountZero"); } }
+//Resources:VerifierResources:Verifier_IterationsCompleted
+
+		public static string Verifier_IterationsCompleted { get { return GetResourceString("Verifier_IterationsCompleted"); } }
+//Resources:VerifierResources:Verifier_MissingExpectedOutput
+
+		public static string Verifier_MissingExpectedOutput { get { return GetResourceString("Verifier_MissingExpectedOutput"); } }
 //Resources:VerifierResources:Verifier_MissingInput
 
 		public static string Verifier_MissingInput { get { return GetResourceString("Verifier_MissingInput"); } }
@@ -87,7 +96,10 @@ namespace LagoVista.IoT.Verifiers.Resources
 			public const string Verifier_Actual = "Verifier_Actual";
 			public const string Verifier_Expected = "Verifier_Expected";
 			public const string Verifier_Expected_NotMatch_Actual = "Verifier_Expected_NotMatch_Actual";
+			public const string Verifier_Field = "Verifier_Field";
 			public const string Verifier_IterationCountZero = "Verifier_IterationCountZero";
+			public const string Verifier_IterationsCompleted = "Verifier_IterationsCompleted";
+			public const string Verifier_MissingExpectedOutput = "Verifier_MissingExpectedOutput";
 			public const string Verifier_MissingInput = "Verifier_MissingInput";
 			public const string Verifier_MissingInputType = "Verifier_MissingInputType";
 			public const string Verifier_ParserFailed = "Verifier_ParserFailed";

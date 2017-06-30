@@ -22,7 +22,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
         private void WriteResults(VerificationResults resultSet)
         {
             Console.WriteLine("Succcess    : " + resultSet.Success);
-            Console.WriteLine("Iterations  : " + resultSet.IterationCompleted);
+            Console.WriteLine("Iterations  : " + resultSet.IterationsCompleted);
             Console.WriteLine("ExecutionMS : " + resultSet.ExecutionTimeMS);
 
             foreach (var result in resultSet.Results)
@@ -34,7 +34,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
                 Console.WriteLine("  ");
             }
 
-            foreach (var err in resultSet.ErrorMessage)
+            foreach (var err in resultSet.ErrorMessages)
             {
                 Console.WriteLine(err);
             }
@@ -86,7 +86,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
             WriteResults(result);
 
             Assert.IsTrue(result.Success);
-            Assert.AreEqual(1, result.IterationCompleted);
+            Assert.AreEqual(1, result.IterationsCompleted);
         }
 
 
@@ -114,7 +114,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
             WriteResults(result);
 
             Assert.IsFalse(result.Success);
-            Assert.AreEqual(1, result.IterationCompleted);
+            Assert.AreEqual(1, result.IterationsCompleted);
         }
 
 

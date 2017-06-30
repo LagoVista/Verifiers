@@ -127,13 +127,22 @@
     <value>Expected</value>
   </data>
   <data name="Verifier_Expected_NotMatch_Actual" xml:space="preserve">
-    <value>Expected Value does not Match Actual</value>
+    <value>Maching failed</value>
+  </data>
+  <data name="Verifier_Field" xml:space="preserve">
+    <value>Field</value>
   </data>
   <data name="Verifier_IterationCountZero" xml:space="preserve">
     <value>Iteration Count is Zero, please perform at least one iteration.</value>
   </data>
+  <data name="Verifier_IterationsCompleted" xml:space="preserve">
+    <value>Iterations Completed</value>
+  </data>
+  <data name="Verifier_MissingExpectedOutput" xml:space="preserve">
+    <value>You must provided the expected output for the verifier.</value>
+  </data>
   <data name="Verifier_MissingInput" xml:space="preserve">
-    <value>Input Value is Missing</value>
+    <value>Input value is missing, you must provide at a minimum a payload, topic, path/query string or a header.</value>
   </data>
   <data name="Verifier_MissingInputType" xml:space="preserve">
     <value>Type of Input is Missing</value>

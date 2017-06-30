@@ -39,7 +39,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
                 String.IsNullOrEmpty(verifier.PathAndQueryString) &&
                 verifier.Headers.Count == 0) 
             {
-                result.ErrorMessage.Add(VerifierResources.Verifier_MissingInput);
+                result.ErrorMessages.Add(VerifierResources.Verifier_MissingInput);
                 result.Success = false;
                 await _resultRepo.AddResultAsync(result);
                 return result;
@@ -47,7 +47,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
 
             if(verifier.ExpectedOutputs == null ||verifier.ExpectedOutputs.Count == 0)
             {
-                result.ErrorMessage.Add(VerifierResources.Verifier_MissingInput);
+                result.ErrorMessages.Add(VerifierResources.Verifier_MissingInput);
                 result.Success = false;
                 await _resultRepo.AddResultAsync(result);
                 return result;
@@ -55,7 +55,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
           
             if(EntityHeader.IsNullOrEmpty(verifier.InputType))
             {
-                result.ErrorMessage.Add(VerifierResources.Verifier_MissingInputType);
+                result.ErrorMessages.Add(VerifierResources.Verifier_MissingInputType);
                 result.Success = false;
                 await _resultRepo.AddResultAsync(result);
                 return result;
@@ -63,7 +63,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
 
             if(request.Iterations == 0)
             {
-                result.ErrorMessage.Add(VerifierResources.Verifier_IterationCountZero);
+                result.ErrorMessages.Add(VerifierResources.Verifier_IterationCountZero);
                 result.Success = false;
                 await _resultRepo.AddResultAsync(result);
                 return result;
@@ -89,7 +89,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
                     pem.BinaryPayload = verifier.GetBinaryPayload();
                     if (pem.BinaryPayload == null || pem.BinaryPayload.Length == 0)
                     {
-                        result.ErrorMessage.Add(VerifierResources.Verifier_MissingInput);   
+                        result.ErrorMessages.Add(VerifierResources.Verifier_MissingInput);   
                         result.Success = false;
                         await _resultRepo.AddResultAsync(result);
                         return result;
@@ -106,6 +106,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
                 }
 
                 pem.Envelope.Path = verifier.PathAndQueryString;
+                pem.Envelope.Topic = verifier.Topic;
 
                 var parseResult = parser.Parse(pem, request.Configuration);
                 if (parseResult.Successful)
@@ -138,13 +139,13 @@ namespace LagoVista.IoT.Verifiers.Runtime
                                 };
 
                                 result.Results.Add(verificationResult);
-                                result.ErrorMessage.Add($"{VerifierResources.Verifier_Expected_NotMatch_Actual}, {VerifierResources.Verifier_Expected} {verificationResult.Expected}, {VerifierResources.Verifier_Actual} {verificationResult.Actual} ");
+                                result.ErrorMessages.Add($"{VerifierResources.Verifier_Expected_NotMatch_Actual}. {VerifierResources.Verifier_Field}: {item.Key},  {VerifierResources.Verifier_Expected}={verificationResult.Expected}, {VerifierResources.Verifier_Actual}={verificationResult.Actual} ");
                                 result.Success = false;
                             }
                         }
                         else
                         {
-                            result.ErrorMessage.Add($"{VerifierResources.Verifier_ResultDoesNotContainKey}, {item.Key}");
+                            result.ErrorMessages.Add($"{VerifierResources.Verifier_ResultDoesNotContainKey}, {item.Key}");
                             result.Success = false;
                         }
                     }
@@ -154,18 +155,19 @@ namespace LagoVista.IoT.Verifiers.Runtime
                     result.Success = false;
                 }
 
-                result.IterationCompleted++;
+                result.IterationsCompleted++;
 
                 if (!result.Success)
                 {
                     idx = request.Iterations;
-                    result.ErrorMessage.Add($"{VerifierResources.Verifier_Aborted} {result.IterationCompleted}");
+                    result.ErrorMessages.Add($"{VerifierResources.Verifier_Aborted} {VerifierResources.Verifier_IterationsCompleted} ({result.IterationsCompleted})");
                 }
             }
 
             sw.Stop();
 
-            result.ExecutionTimeMS = sw.Elapsed.TotalMilliseconds;
+            result.ExecutionTimeMS = Math.Round(sw.Elapsed.TotalMilliseconds, 3);
+
             await _resultRepo.AddResultAsync(result);
             return result;
         }

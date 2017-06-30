@@ -108,11 +108,11 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// <param name="componentid"></param>
         /// <returns></returns>
         [HttpGet("verifiers/component/{componentid}")]
-        public async Task<ListResponse<VerifierSummary>> GetVerifiersForComponentAsync(string componentid)
+        public async Task<ListResponse<Verifier>> GetVerifiersForComponentAsync(string componentid)
         {
             var verifiers = await _verifierManager.GetVerifierForComponentAsync(componentid, OrgEntityHeader, UserEntityHeader);
             
-            return ListResponse<VerifierSummary>.Create(verifiers);
+            return ListResponse<Verifier>.Create(verifiers);
         }
 
         /// <summary>

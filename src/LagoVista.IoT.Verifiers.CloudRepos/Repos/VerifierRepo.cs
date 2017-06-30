@@ -47,12 +47,9 @@ namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
             return (await base.QueryAsync(qry => qry.Key == key && qry.OwnerOrganization.Id == orgId)).FirstOrDefault();
         }
 
-        public async Task<IEnumerable<VerifierSummary>> GetVerifiersForComponentAsync(string componentId)
+        public async Task<IEnumerable<Verifier>> GetVerifiersForComponentAsync(string componentId)
         {
-            var items = await base.QueryAsync(qry => qry.Component.Id == componentId);
-
-            return from item in items
-                   select item.CreateSummary();
+            return await base.QueryAsync(qry => qry.Component.Id == componentId);
         }
 
         public async  Task<IEnumerable<VerifierSummary>> GetVerifiersForOrgAsync(string orgId)

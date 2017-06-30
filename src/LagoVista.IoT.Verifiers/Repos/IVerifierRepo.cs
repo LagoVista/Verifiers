@@ -10,7 +10,7 @@ namespace LagoVista.IoT.Verifiers.Repos
         Task<Verifier> GetVerifierAsync(string id);
         Task<Verifier> GetVerifierByKeyAsync(string key, string orgId);
         Task<IEnumerable<VerifierSummary>> GetVerifiersForOrgAsync(string orgId);
-        Task<IEnumerable<VerifierSummary>> GetVerifiersForComponentAsync(string componentId);
+        Task<IEnumerable<Verifier>> GetVerifiersForComponentAsync(string componentId);
         Task UpdateVerifierAsync(Verifier verifier);
         Task DeleteVerifierAsync(string id);
         Task<bool> QueryKeyInUseAsync(string key, string orgId);
