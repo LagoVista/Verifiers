@@ -12,7 +12,7 @@
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.18" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-    <PackageReference Include="LagoVista.Core" Version="1.2.45-alpha0824" />
+    <PackageReference Include="LagoVista.Core" Version="1.2.45-alpha1735" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <Reference Include="System" />
