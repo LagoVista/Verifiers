@@ -47,13 +47,13 @@ namespace LagoVista.IoT.Verifiers.Managers
 
         public async Task<IEnumerable<Verifier>> GetVerifierForComponentAsync(string componentId, EntityHeader org, EntityHeader user)
         {
-            await AuthorizeOrgAccess(user, org.Id, typeof(Verifier));
+            await AuthorizeOrgAccessAsync(user, org.Id, typeof(Verifier));
             return await _verifierRepo.GetVerifiersForComponentAsync(componentId);
         }
 
         public async Task<IEnumerable<VerifierSummary>> GetVerifierForOrgsAsync(string orgId, EntityHeader user)
         {
-            await AuthorizeOrgAccess(user, orgId, typeof(Verifier));
+            await AuthorizeOrgAccessAsync(user, orgId, typeof(Verifier));
             return await _verifierRepo.GetVerifiersForOrgAsync(orgId);
         }
 
