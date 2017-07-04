@@ -4,7 +4,7 @@ using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Runtime.Core.Module;
 using LagoVista.IoT.Web.Common.Controllers;
-using LagoVista.UserAdmin.Models.Account;
+using LagoVista.UserAdmin.Models.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
