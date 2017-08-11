@@ -14,11 +14,12 @@ using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Logging.Loggers;
 using LagoVista.Core.Models;
+using LagoVista.IoT.Web.Common.Attributes;
 
 namespace LagoVista.IoT.Verifiers.Rest.Controllers
-{
+{    
     [Authorize]
-    [Route("api")]
+    [ConfirmedUser]
     public class VerifierController : LagoVistaBaseController
     {
         IVerifierManager _verifierManager;
@@ -32,7 +33,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// </summary>
         /// <param name="verifier"></param>
         /// <returns></returns>
-        [HttpPost("verifier")]
+        [HttpPost("/api/verifier")]
         public Task<InvokeResult> AddVerifierAsync([FromBody] Verifier verifier)
         {
             return _verifierManager.AddVerifierAsync(verifier, UserEntityHeader, OrgEntityHeader);
@@ -43,7 +44,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// </summary>
         /// <param name="verifier"></param>
         /// <returns></returns>
-        [HttpPut("verifier")]
+        [HttpPut("/api/verifier")]
         public Task<InvokeResult> UpdateVerifierAsync([FromBody] Verifier verifier)
         {
             SetUpdatedProperties(verifier);
@@ -55,7 +56,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("verifier/{id}")]
+        [HttpGet("/api/verifier/{id}")]
         public async Task<DetailResponse<Verifier>> GetVerifierAsync(string id)
         {
             var verifier = await _verifierManager.GetVerifierAsync(id, OrgEntityHeader, UserEntityHeader);
@@ -68,7 +69,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// Verifier - Create New
         /// </summary>
         /// <returns></returns>
-        [HttpGet("verifier/factory/{type}")]
+        [HttpGet("/api/verifier/factory/{type}")]
         public DetailResponse<Verifier> CreateVerifierAsync(string type)
         {
             var verifier = new Verifier();
@@ -94,7 +95,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// </summary>
         /// <param name="orgid"></param>
         /// <returns></returns>
-        [HttpGet("verifiers/org/{orgid}")]
+        [HttpGet("/api/verifiers/org/{orgid}")]
         public async Task<ListResponse<VerifierSummary>> GetVerifiersForOrgAsync(string orgid)
         {
             var verifiers = await _verifierManager.GetVerifierForOrgsAsync(orgid, UserEntityHeader);
@@ -107,7 +108,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// </summary>
         /// <param name="componentid"></param>
         /// <returns></returns>
-        [HttpGet("verifiers/component/{componentid}")]
+        [HttpGet("/api/verifiers/component/{componentid}")]
         public async Task<ListResponse<Verifier>> GetVerifiersForComponentAsync(string componentid)
         {
             var verifiers = await _verifierManager.GetVerifierForComponentAsync(componentid, OrgEntityHeader, UserEntityHeader);
@@ -116,10 +117,10 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         }
 
         /// <summary>
-        /// Deployment Config - Key In Use
+        /// Verifier - Key In Use
         /// </summary>
         /// <returns></returns>
-        [HttpGet("verifiers/keyinuse/{key}")]
+        [HttpGet("/api/verifiers/keyinuse/{key}")]
         public Task<bool> VerifierKeyInUse(String key)
         {
             return _verifierManager.QueryVerifierKeyInUseAsync(key, CurrentOrgId);
@@ -130,7 +131,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("verifier/{id}")]
+        [HttpDelete("/api/verifier/{id}")]
         public Task<InvokeResult> DeleteVerifierAsync(string id)
         {
             return _verifierManager.DeleteVerifierAsync(id, OrgEntityHeader, UserEntityHeader);
