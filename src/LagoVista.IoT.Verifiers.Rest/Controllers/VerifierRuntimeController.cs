@@ -27,7 +27,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
 
         [HttpPost("/api/verifierruntime/fieldparser/execute")]
         public Task<VerificationResults> VerifyFieldParser([FromBody] VerificationRequest<DeviceMessageDefinitionField> verificationRequest)
-        {            
+        {
             return _fieldParserRuntime.VerifyAsync(verificationRequest, UserEntityHeader);
         }
 
