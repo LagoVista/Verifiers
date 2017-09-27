@@ -50,7 +50,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
         private IParserManager GetParserManager(string result)
         {
             var fakeParser = new Moq.Mock<IMessageFieldParser>();
-            fakeParser.Setup(prs => prs.Parse(It.IsAny<PipelineExectionMessage>())).Returns(new IoT.Runtime.Core.Models.Messaging.MessageFieldParserResult()
+            fakeParser.Setup(prs => prs.Parse(It.IsAny<PipelineExecutionMessage>())).Returns(new IoT.Runtime.Core.Models.Messaging.MessageFieldParserResult()
             {
                 Result = result,
                 Success = true

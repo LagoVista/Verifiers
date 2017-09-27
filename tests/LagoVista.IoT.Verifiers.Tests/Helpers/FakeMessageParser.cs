@@ -15,7 +15,7 @@ namespace LagoVista.IoT.Verifiers.Tests.Helpers
     {
         public KeyValuePair<string, string>[] KVPs { get; set; }
 
-        public InvokeResult Parse(PipelineExectionMessage pem, DeviceMessageDefinition definition)
+        public InvokeResult Parse(PipelineExecutionMessage pem, DeviceMessageDefinition definition)
         {
             foreach (var kvp in KVPs)
             {
