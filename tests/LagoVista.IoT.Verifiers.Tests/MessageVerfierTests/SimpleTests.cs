@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using LagoVista.IoT.Verifiers.Tests.Helpers;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Logging.Loggers;
+using LagoVista.IoT.DeviceAdmin.Interfaces.Managers;
 
 namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
 {
@@ -19,6 +20,7 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
     public class SimpleTests
     {
         Mock<IVerifierResultRepo> _resultRepo;
+        Mock<IDeviceAdminManager> _deviceAdminManager;
 
         private void WriteResults(VerificationResults resultSet)
         {
@@ -46,6 +48,7 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
         public void Init()
         {
             _resultRepo = new Mock<IVerifierResultRepo>();
+            _deviceAdminManager = new Mock<IDeviceAdminManager>();
         }
         
         private IParserManager GetParserManager(params KeyValuePair<string, string>[] kvps)
@@ -73,12 +76,12 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
             verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key1", Value = "5" });
             verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key2", Value = "value1" });
 
-            var verifiers = new MessageParserVerifierRuntime(parserMgr, _resultRepo.Object);
+            var verifiers = new MessageParserVerifierRuntime(parserMgr, _resultRepo.Object, _deviceAdminManager.Object);
             var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinition>()
             {
                 Verifier = verifier,
                 Configuration = msgDefinition
-            }, null);
+            }, null, null);
 
             WriteResults(result);
 
@@ -90,22 +93,24 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
         public async Task Verifier_Message_SimpleTest_Invalid()
         {
             var msgDefinition = new DeviceMessageDefinition();
-            
-            var verifier = new Verifier();
-            verifier.ShouldSucceed = true;
-            verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
-            verifier.InputType = EntityHeader<InputTypes>.Create(InputTypes.Binary);
-            verifier.Input = "03 32 05";
+
+            var verifier = new Verifier
+            {
+                ShouldSucceed = true,
+                VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser),
+                InputType = EntityHeader<InputTypes>.Create(InputTypes.Binary),
+                Input = "03 32 05"
+            };
             verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key1", Value = "8" });
             verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key2", Value = "value1" });
 
             var parserMgr = GetParserManager(new KeyValuePair<string, string>("key1", "5"), new KeyValuePair<string, string>("key2", "value1"));
-            var verifiers = new MessageParserVerifierRuntime(parserMgr, _resultRepo.Object);
+            var verifiers = new MessageParserVerifierRuntime(parserMgr, _resultRepo.Object, _deviceAdminManager.Object);
             var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinition>()
             {
                 Verifier = verifier,
                 Configuration = msgDefinition
-            }, null);
+            }, null, null);
 
             WriteResults(result);
 

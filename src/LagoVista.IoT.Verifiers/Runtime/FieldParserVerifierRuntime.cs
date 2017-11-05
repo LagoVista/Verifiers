@@ -11,6 +11,7 @@ using LagoVista.IoT.Verifiers.Repos;
 using LagoVista.Core.Models;
 using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.Runtime.Core.Models.PEM;
+using LagoVista.IoT.DeviceAdmin.Interfaces.Managers;
 
 namespace LagoVista.IoT.Verifiers.Runtime
 {
@@ -18,14 +19,16 @@ namespace LagoVista.IoT.Verifiers.Runtime
     {
         IParserManager _parserManager;
         IVerifierResultRepo _resultRepo;
+        IDeviceAdminManager _deviceAdminManager;
 
-        public FieldParserVerifierRuntime(IParserManager parserManager, IVerifierResultRepo resultRepo)
+        public FieldParserVerifierRuntime(IParserManager parserManager, IVerifierResultRepo resultRepo, IDeviceAdminManager deviceAdminManager)
         {
             _parserManager = parserManager;
             _resultRepo = resultRepo;
+            _deviceAdminManager = deviceAdminManager;
         }
 
-        public async Task<VerificationResults> VerifyAsync(VerificationRequest<DeviceMessageDefinitionField> request, EntityHeader requestedBy)
+        public async Task<VerificationResults> VerifyAsync(VerificationRequest<DeviceMessageDefinitionField> request, EntityHeader org, EntityHeader user)
         {
             var verifier = request.Verifier as Verifier;
 
@@ -69,7 +72,16 @@ namespace LagoVista.IoT.Verifiers.Runtime
             var start = DateTime.Now;
             result.DateStamp = start.ToJSONString();
             result.Success = true;
-            result.RequestedBy = requestedBy;
+            result.RequestedBy = user;
+
+            if (request.Configuration.StorageType.Value == DeviceAdmin.Models.ParameterTypes.State)
+            {
+                request.Configuration.StateSet.Value = await _deviceAdminManager.GetStateSetAsync(request.Configuration.StateSet.Id, org, user);
+            }
+            else if (request.Configuration.StorageType.Value == DeviceAdmin.Models.ParameterTypes.ValueWithUnit)
+            {
+                request.Configuration.UnitSet.Value = await _deviceAdminManager.GetAttributeUnitSetAsync(request.Configuration.UnitSet.Id, org, user);
+            }
 
             /* TODO: Need to think this through we are using the same parser we are for instances, do we care about logging this? */
             var logger = new VerifierLogger(null, null, null, null);

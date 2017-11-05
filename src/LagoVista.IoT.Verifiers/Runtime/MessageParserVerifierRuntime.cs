@@ -11,6 +11,7 @@ using LagoVista.IoT.Verifiers.Resources;
 using LagoVista.Core.Models;
 using static LagoVista.IoT.DeviceAdmin.Models.InputCommand;
 using LagoVista.IoT.Runtime.Core.Models.PEM;
+using LagoVista.IoT.DeviceAdmin.Interfaces.Managers;
 
 namespace LagoVista.IoT.Verifiers.Runtime
 {
@@ -18,15 +19,16 @@ namespace LagoVista.IoT.Verifiers.Runtime
     {
         IParserManager _parserManager;
         IVerifierResultRepo _resultRepo;
+        IDeviceAdminManager _deviceAdminManager;
 
-        public MessageParserVerifierRuntime(IParserManager parserManager, IVerifierResultRepo resultRepo)
+        public MessageParserVerifierRuntime(IParserManager parserManager, IVerifierResultRepo resultRepo, IDeviceAdminManager deviceAdminManager)
         {
             _parserManager = parserManager;
             _resultRepo = resultRepo;
+            _deviceAdminManager = deviceAdminManager;
         }
 
-
-        public async Task<VerificationResults> VerifyAsync(VerificationRequest<DeviceMessageDefinition> request, EntityHeader requestedBy)
+        public async Task<VerificationResults> VerifyAsync(VerificationRequest<DeviceMessageDefinition> request, EntityHeader org, EntityHeader user)
         {
             var sw = new Stopwatch();
 
@@ -72,9 +74,22 @@ namespace LagoVista.IoT.Verifiers.Runtime
             var start = DateTime.Now;
             result.DateStamp = start.ToJSONString();
             result.Success = true;
+            result.RequestedBy = user;
 
             /* TODO: Need to think this through we are using the same parser we are for instances, do we care about logging this? */
             var logger = new VerifierLogger(null, null, null, null);
+
+            foreach(var fld in request.Configuration.Fields)
+            {
+                if(fld.StorageType.Value == DeviceAdmin.Models.ParameterTypes.State)
+                {
+                    fld.StateSet.Value = await _deviceAdminManager.GetStateSetAsync(fld.StateSet.Id, org, user);
+                }
+                else if(fld.StorageType.Value == DeviceAdmin.Models.ParameterTypes.ValueWithUnit)
+                {
+                    fld.UnitSet.Value = await _deviceAdminManager.GetAttributeUnitSetAsync(fld.UnitSet.Id, org, user);
+                }
+            }
 
             var parser = _parserManager.GetMessageParser(request.Configuration, logger);
 

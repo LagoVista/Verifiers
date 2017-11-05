@@ -28,13 +28,13 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         [HttpPost("/api/verifierruntime/fieldparser/execute")]
         public Task<VerificationResults> VerifyFieldParser([FromBody] VerificationRequest<DeviceMessageDefinitionField> verificationRequest)
         {
-            return _fieldParserRuntime.VerifyAsync(verificationRequest, UserEntityHeader);
+            return _fieldParserRuntime.VerifyAsync(verificationRequest, OrgEntityHeader, UserEntityHeader);
         }
 
         [HttpPost("/api/verifierruntime/messageparser/execute")]
         public Task<VerificationResults> VerifyMessageparser([FromBody] VerificationRequest<DeviceMessageDefinition> messageDefinition)
         {
-            return _messageParserRuntime.VerifyAsync(messageDefinition, UserEntityHeader);
+            return _messageParserRuntime.VerifyAsync(messageDefinition, OrgEntityHeader, UserEntityHeader);
         }
     }
 }

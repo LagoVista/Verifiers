@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
+using LagoVista.IoT.DeviceAdmin.Interfaces.Managers;
 using LagoVista.IoT.DeviceMessaging.Admin.Models;
 using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.Runtime.Core.Models.PEM;
@@ -18,6 +19,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
     public class SimpleTests
     {
         Mock<IVerifierResultRepo> _resultRepo;
+        Mock<IDeviceAdminManager> _deviceAdminManager;
 
         private void WriteResults(VerificationResults resultSet)
         {
@@ -45,6 +47,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
         public void Init()
         {
             _resultRepo = new Mock<IVerifierResultRepo>();
+            _deviceAdminManager = new Mock<IDeviceAdminManager>();
         }
 
         private IParserManager GetParserManager(string result)
@@ -67,7 +70,10 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
         {
             var parserMgr = GetParserManager("one");
 
-            var config = new DeviceMessageDefinitionField();
+            var config = new DeviceMessageDefinitionField()
+            {
+                StorageType = EntityHeader<DeviceAdmin.Models.ParameterTypes>.Create(DeviceAdmin.Models.ParameterTypes.String)
+            };
 
             var verifier = new Verifier();
             verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
@@ -76,12 +82,12 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
             verifier.Input = "abc123";
             verifier.ExpectedOutput = "one";
 
-            var verifiers = new FieldParserVerifierRuntime(parserMgr, _resultRepo.Object);
+            var verifiers = new FieldParserVerifierRuntime(parserMgr, _resultRepo.Object, _deviceAdminManager.Object);
             var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinitionField>()
             {
                 Verifier = verifier,
                 Configuration = config
-            }, null);
+            }, null, null);
 
             WriteResults(result);
 
@@ -95,7 +101,10 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
         {
             var parserMgr = GetParserManager("two");
 
-            var config = new DeviceMessageDefinitionField();
+            var config = new DeviceMessageDefinitionField()
+            {
+                StorageType = EntityHeader<DeviceAdmin.Models.ParameterTypes>.Create(DeviceAdmin.Models.ParameterTypes.String)
+            };
 
             var verifier = new Verifier();
             verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
@@ -104,12 +113,12 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
             verifier.Input = "abc123";
             verifier.ExpectedOutput = "one";
 
-            var verifiers = new FieldParserVerifierRuntime(parserMgr, _resultRepo.Object);
+            var verifiers = new FieldParserVerifierRuntime(parserMgr, _resultRepo.Object, _deviceAdminManager.Object);
             var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinitionField>()
             {
                 Verifier = verifier,
                 Configuration = config
-            }, null);
+            }, null, null);
 
             WriteResults(result);
 

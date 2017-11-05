@@ -36,7 +36,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         [HttpPost("/api/verifier")]
         public Task<InvokeResult> AddVerifierAsync([FromBody] Verifier verifier)
         {
-            return _verifierManager.AddVerifierAsync(verifier, UserEntityHeader, OrgEntityHeader);
+            return _verifierManager.AddVerifierAsync(verifier, OrgEntityHeader, UserEntityHeader);
         }
 
         /// <summary>
