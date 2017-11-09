@@ -22,6 +22,8 @@ namespace LagoVista.IoT.Verifiers.Utils
             _instanceId = instanceId;
         }
 
+        public bool DebugMode { get; set; }
+
         public string InstanceInstrumentationKey => _instanceInstrumentationKey;
 
         public string DeviceInstrumentationKey => _deviceInstrumentationKey;
