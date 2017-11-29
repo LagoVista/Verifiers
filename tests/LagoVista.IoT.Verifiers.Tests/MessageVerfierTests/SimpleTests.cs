@@ -13,6 +13,7 @@ using LagoVista.IoT.Verifiers.Tests.Helpers;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.DeviceAdmin.Interfaces.Managers;
+using LagoVista.Core.Validation;
 
 namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
 {
@@ -58,6 +59,23 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
             mockParserMgr.Setup(prs => prs.GetMessageParser(It.IsAny<DeviceMessageDefinition>(), It.IsAny<IInstanceLogger>())).Returns(fakeParser);
             fakeParser.KVPs = kvps;
             return mockParserMgr.Object;
+        }
+
+        [TestMethod]
+        public void Verifier_ShouldValidateIfValid()
+        {
+            var parserMgr = GetParserManager(new KeyValuePair<string, string>("key1", "5"), new KeyValuePair<string, string>("key2", "value1"));
+
+            var verifier = new Verifier();
+            verifier.Headers.Add(new Header() { Name = "field1", Value = "value1" });
+            verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
+            verifier.ShouldSucceed = true;
+            verifier.InputType = EntityHeader<InputTypes>.Create(InputTypes.Binary);
+            verifier.Input = "03 32 05";
+            verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key1", Value = "5" });
+            verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key2", Value = "value1" });
+
+            Validator.Validate(verifier);
         }
 
         [TestMethod]
