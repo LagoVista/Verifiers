@@ -159,7 +159,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
                 if(!result.Success)
                 {
                     idx = request.Iterations;
-                    result.ErrorMessages.Add($"{VerifierResources.Verifier_Aborted} {result.IterationsCompleted}");
+                    result.ErrorMessages.Add($"{VerifierResources.Verifier_Aborted}; {result.IterationsCompleted}");
                 }
             }
 

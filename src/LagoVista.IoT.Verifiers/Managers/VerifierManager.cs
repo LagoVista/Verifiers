@@ -35,6 +35,7 @@ namespace LagoVista.IoT.Verifiers.Managers
             var verifier = await _verifierRepo.GetVerifierAsync(id);
             await AuthorizeAsync(verifier, AuthorizeActions.Update, user, org);
             await ConfirmNoDepenenciesAsync(verifier);
+            await _verifierRepo.DeleteVerifierAsync(id);
             return InvokeResult.Success;
         }
 
