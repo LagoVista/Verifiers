@@ -12,11 +12,11 @@
     <DocumentationFile>bin\Release\netstandard1.6\LagoVista.IoT.Verifiers.Rest.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="1.2.264-alpha1443" />
-    <PackageReference Include="LagoVista.IoT.Pipeline.Admin" Version="1.2.264-alpha1443" />
-    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="1.2.264-alpha1443" />
-    <PackageReference Include="LagoVista.IoT.Web.Common" Version="1.2.264-alpha1443" />
-    <PackageReference Include="LagoVista.UserAdmin" Version="1.2.264-alpha1443" />
+    <PackageReference Include="LagoVista.Core" Version="1.2.267-alpha1249" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Admin" Version="1.2.267-alpha1249" />
+    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="1.2.267-alpha1249" />
+    <PackageReference Include="LagoVista.IoT.Web.Common" Version="1.2.267-alpha1249" />
+    <PackageReference Include="LagoVista.UserAdmin" Version="1.2.267-alpha1249" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta3" />
