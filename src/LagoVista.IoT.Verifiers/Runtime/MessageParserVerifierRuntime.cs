@@ -1,5 +1,6 @@
 ﻿using LagoVista.IoT.Runtime.Core.Module;
 using System;
+using System.Linq;
 using LagoVista.Core;
 using LagoVista.IoT.DeviceMessaging.Admin.Models;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
@@ -167,6 +168,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
                 else
                 {
                     result.Success = false;
+                    result.ErrorMessages.AddRange(parseResult.Errors.Select(err=>err.Message));
                 }
 
                 result.IterationsCompleted++;
