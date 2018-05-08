@@ -168,7 +168,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
                 else
                 {
                     result.Success = false;
-                    result.ErrorMessages.AddRange(parseResult.Errors.Select(err=>err.Message));
+                    result.ErrorMessages.AddRange(parseResult.Errors.Select(err=>err.Message + " " + err.Details));
                 }
 
                 result.IterationsCompleted++;
