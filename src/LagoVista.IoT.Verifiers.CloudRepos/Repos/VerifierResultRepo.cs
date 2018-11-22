@@ -17,8 +17,6 @@ namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
             _shouldConsolidateCollections = repoSettings.ShouldConsolidateCollections;
         }
 
-        protected override bool IsRuntimeData {get {return true; } }
-
         protected override bool ShouldConsolidateCollections => _shouldConsolidateCollections;
 
         public Task AddResultAsync(VerificationResults result)
