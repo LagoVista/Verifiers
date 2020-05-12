@@ -127,6 +127,40 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
         }
 
 
+        [TestMethod]
+        public async Task Verfier_Field_XML_Simple_Valid()
+        {
+            var parserMgr = GetParserManager("two");
+
+            var config = new DeviceMessageDefinitionField()
+            {
+                StorageType = EntityHeader<DeviceAdmin.Models.ParameterTypes>.Create(DeviceAdmin.Models.ParameterTypes.String),
+                ContentType = EntityHeader<MessageContentTypes>.Create(MessageContentTypes.XML),
+                XPath = "//Event/control"
+
+            };
+
+            var verifier = new Verifier();
+            verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
+            verifier.ShouldSucceed = true;
+            verifier.InputType = EntityHeader<InputTypes>.Create(InputTypes.Text);
+            verifier.Input = "abc123";
+            verifier.ExpectedOutput = "one";
+
+            var verifiers = new FieldParserVerifierRuntime(parserMgr, _resultRepo.Object, _deviceAdminManager.Object);
+            var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinitionField>()
+            {
+                Verifier = verifier,
+                Configuration = config
+            }, null, null);
+
+            WriteResults(result);
+
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual(1, result.IterationsCompleted);
+        }
+
+
 
     }
 }
