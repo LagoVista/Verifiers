@@ -1,25 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <NetStandardImplicitPackageVersion>2.0.3</NetStandardImplicitPackageVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard1.6\LagoVista.IoT.Verifiers.Rest.xml</DocumentationFile>
+    <TargetFramework>net5.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <OutputType>library</OutputType>
     <NoWarn>1701;1702;1705;1591</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702;1705;1591</NoWarn>
-    <DocumentationFile>bin\Release\netstandard1.6\LagoVista.IoT.Verifiers.Rest.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="2.1.1378-beta0436" />
-    <PackageReference Include="LagoVista.IoT.Pipeline.Admin" Version="2.1.1378-beta0436" />
-    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="2.1.1378-beta0436" />
-    <PackageReference Include="LagoVista.IoT.Web.Common" Version="2.1.1378-beta0436" />
-    <PackageReference Include="LagoVista.UserAdmin" Version="2.1.1378-beta0436" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.1433-beta0832" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Admin" Version="2.1.1433-beta0832" />
+    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="2.1.1433-beta0832" />
+    <PackageReference Include="LagoVista.IoT.Web.Common" Version="2.1.1433-beta0832" />
+    <PackageReference Include="LagoVista.UserAdmin" Version="2.1.1433-beta0832" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.IoT.Verifiers\LagoVista.IoT.Verifiers.csproj" />
