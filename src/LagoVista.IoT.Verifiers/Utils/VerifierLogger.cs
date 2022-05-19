@@ -105,5 +105,13 @@ namespace LagoVista.IoT.Verifiers.Utils
         {
             
         }
+
+        public void TrackMetric(string kind, string name, MetricType metricType, double count, params KeyValuePair<string, string>[] args)
+        {
+        }
+
+        public void TrackMetric(string kind, string name, MetricType metricType, int count, params KeyValuePair<string, string>[] args)
+        {
+        }
     }
 }
