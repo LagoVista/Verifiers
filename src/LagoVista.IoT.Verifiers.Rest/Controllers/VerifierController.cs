@@ -87,7 +87,9 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
                     break;
             }
 
-            return DetailResponse<Verifier>.Create(verifier);
+            var verifierResponse = DetailResponse<Verifier>.Create(verifier);
+            verifierResponse.IsEditing = false;
+            return verifierResponse;            
         }
 
         /// <summary>
