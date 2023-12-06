@@ -13,20 +13,20 @@ using LagoVista.IoT.DeviceAdmin.Interfaces.Managers;
 
 namespace LagoVista.IoT.Verifiers.Runtime
 {
-    public class FieldParserVerifierRuntime : IFieldParserVerifierRuntime
+    public class MessageAttributeParserVerifierRuntime : IMessageAttributeParserVerifierRuntime
     {
         IParserManager _parserManager;
         IVerifierResultRepo _resultRepo;
         IDeviceAdminManager _deviceAdminManager;
 
-        public FieldParserVerifierRuntime(IParserManager parserManager, IVerifierResultRepo resultRepo, IDeviceAdminManager deviceAdminManager)
+        public MessageAttributeParserVerifierRuntime(IParserManager parserManager, IVerifierResultRepo resultRepo, IDeviceAdminManager deviceAdminManager)
         {
             _parserManager = parserManager;
             _resultRepo = resultRepo;
             _deviceAdminManager = deviceAdminManager;
         }
 
-        public async Task<VerificationResults> VerifyAsync(VerificationRequest<DeviceField> request, EntityHeader org, EntityHeader user)
+        public async Task<VerificationResults> VerifyAsync(VerificationRequest<MessageAttributeParser> request, EntityHeader org, EntityHeader user)
         {
             var verifier = request.Verifier as Verifier;
 
@@ -72,7 +72,7 @@ namespace LagoVista.IoT.Verifiers.Runtime
             result.Success = true;
             result.RequestedBy = user;
 
-  
+
             /* TODO: Need to think this through we are using the same parser we are for instances, do we care about logging this? */
             var logger = new VerifierLogger(null, null, null, null);
 

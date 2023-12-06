@@ -10,7 +10,6 @@ using LagoVista.IoT.Verifiers.Utils;
 using LagoVista.IoT.Verifiers.Repos;
 using LagoVista.IoT.Verifiers.Resources;
 using LagoVista.Core.Models;
-using LagoVista.IoT.Runtime.Core.Models.PEM;
 using LagoVista.IoT.DeviceAdmin.Interfaces.Managers;
 
 namespace LagoVista.IoT.Verifiers.Runtime
