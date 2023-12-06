@@ -79,6 +79,22 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
         }
 
         [TestMethod]
+        public void Verifier_Power_Message_Verifier()
+        {
+            var parserMgr = GetParserManager(new KeyValuePair<string, string>("key1", "5"), new KeyValuePair<string, string>("key2", "value1"));
+
+            var verifier = new Verifier();
+            verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
+            verifier.ShouldSucceed = true;
+            verifier.InputType = EntityHeader<InputTypes>.Create(InputTypes.Text);
+            verifier.Input = "{ deviceid: 'poolHeater', watts: 0, msgid: 'power' }";
+            verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key1", Value = "5" });
+            verifier.ExpectedOutputs.Add(new ExpectedValue() { Key = "key2", Value = "value1" });
+
+            Validator.Validate(verifier);
+        }
+
+        [TestMethod]
         public async Task Verfier_Message_SimpleTest_Valid()
         {
             var msgDefinition = new DeviceMessageDefinition();

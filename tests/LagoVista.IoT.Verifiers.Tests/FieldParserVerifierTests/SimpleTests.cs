@@ -83,7 +83,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
             verifier.ExpectedOutput = "one";
 
             var verifiers = new FieldParserVerifierRuntime(parserMgr, _resultRepo.Object, _deviceAdminManager.Object);
-            var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinitionField>()
+            var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceField>()
             {
                 Verifier = verifier,
                 Configuration = config
@@ -114,7 +114,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
             verifier.ExpectedOutput = "one";
 
             var verifiers = new FieldParserVerifierRuntime(parserMgr, _resultRepo.Object, _deviceAdminManager.Object);
-            var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinitionField>()
+            var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceField>()
             {
                 Verifier = verifier,
                 Configuration = config
@@ -148,7 +148,7 @@ namespace LagoVista.IoT.Verifiers.Tests.FieldParserVerifierTests
             verifier.ExpectedOutput = "one";
 
             var verifiers = new FieldParserVerifierRuntime(parserMgr, _resultRepo.Object, _deviceAdminManager.Object);
-            var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceMessageDefinitionField>()
+            var result = await verifiers.VerifyAsync(new IoT.Runtime.Core.Models.Verifiers.VerificationRequest<DeviceField>()
             {
                 Verifier = verifier,
                 Configuration = config
