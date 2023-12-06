@@ -1,16 +1,15 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.Managers;
-using LagoVista.Core.PlatformSupport;
 using LagoVista.IoT.Verifiers.Repos;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using LagoVista.Core.Models;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 using LagoVista.Core.Validation;
 using System.Threading.Tasks;
 using static LagoVista.Core.Models.AuthorizeResult;
 using LagoVista.IoT.Logging.Loggers;
+using LagoVista.Core;
 
 namespace LagoVista.IoT.Verifiers.Managers
 {
@@ -42,6 +41,15 @@ namespace LagoVista.IoT.Verifiers.Managers
         public async Task<Verifier> GetVerifierAsync(string id, EntityHeader org, EntityHeader user)
         {
             var verifier = await _verifierRepo.GetVerifierAsync(id);
+
+            foreach (var ev in verifier?.ExpectedOutputs)
+            {
+                if (EntityHeader.IsNullOrEmpty(ev.Field))
+                {
+                    ev.Field = EntityHeader.Create(Guid.NewGuid().ToId(), ev.Key, ev.Key);
+                }
+            }
+
             await AuthorizeAsync(verifier, AuthorizeActions.Delete, user, org);
             return verifier;
         }

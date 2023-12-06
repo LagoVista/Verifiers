@@ -128,17 +128,21 @@ namespace LagoVista.IoT.Verifiers.Runtime
                     foreach (var item in verifier.ExpectedOutputs)
                     {
                         var expectedValue = item.Value;
-                        if (pem.Envelope.Values.ContainsKey(item.Key))
+                        var key = EntityHeader.IsNullOrEmpty(item.Field) ? item.Key : item.Field.Key;
+                        var field = EntityHeader.IsNullOrEmpty(item.Field) ? item.Key : item.Field.Text;
+
+                        if (pem.Envelope.Values.ContainsKey(key))
                         {
-                            var actualValue = pem.Envelope.Values[item.Key].Value;
+                            var actualValue = pem.Envelope.Values[key].Value;
 
                             if (expectedValue == actualValue)
                             {
                                 result.Results.Add(new VerificationResult()
                                 {
-                                    Key = item.Key,
+                                    Field = field,
+                                    Key = key,
                                     Expected = item.Value,
-                                    Actual = String.IsNullOrEmpty(actualValue) ? "-empty-" : actualValue,
+                                    Actual = String.IsNullOrEmpty(actualValue) ? VerifierResources.Empty : actualValue,
                                     Success = true,
                                 });
                             }
@@ -146,20 +150,21 @@ namespace LagoVista.IoT.Verifiers.Runtime
                             {
                                 var verificationResult = new VerificationResult()
                                 {
-                                    Key = item.Key,
+                                    Field = field,
+                                    Key = key,
                                     Expected = item.Value,
-                                    Actual = String.IsNullOrEmpty(actualValue) ? "-empty-" : actualValue,
+                                    Actual = String.IsNullOrEmpty(actualValue) ? VerifierResources.Empty : actualValue,
                                     Success = false,
                                 };
 
                                 result.Results.Add(verificationResult);
-                                result.ErrorMessages.Add($"{VerifierResources.Verifier_Expected_NotMatch_Actual}. {VerifierResources.Verifier_Field}: {item.Key},  {VerifierResources.Verifier_Expected}={verificationResult.Expected}, {VerifierResources.Verifier_Actual}={verificationResult.Actual} ");
+                                result.ErrorMessages.Add($"{VerifierResources.Verifier_Expected_NotMatch_Actual}. {VerifierResources.Verifier_Field}: {field},  {VerifierResources.Verifier_Expected}={verificationResult.Expected}, {VerifierResources.Verifier_Actual}={verificationResult.Actual} ");
                                 result.Success = false;
                             }
                         }
                         else
                         {
-                            result.ErrorMessages.Add($"{VerifierResources.Verifier_ResultDoesNotContainKey}, {item.Key}");
+                            result.ErrorMessages.Add($"{VerifierResources.Verifier_ResultDoesNotContainKey}, {key}");
                             result.Success = false;
                         }
                     }

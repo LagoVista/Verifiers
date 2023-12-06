@@ -1,7 +1,8 @@
-﻿using System.Globalization;
+﻿/*12/6/2023 4:30:57 PM*/
+using System.Globalization;
 using System.Reflection;
 
-//Resources:VerifierResources:Verifier_Aborted
+//Resources:VerifierResources:Empty
 namespace LagoVista.IoT.Verifiers.Resources
 {
 	public class VerifierResources
@@ -55,6 +56,15 @@ namespace LagoVista.IoT.Verifiers.Resources
 			return new HtmlString(str);
         }*/
 		
+		public static string Empty { get { return GetResourceString("Empty"); } }
+//Resources:VerifierResources:NA
+
+		public static string NA { get { return GetResourceString("NA"); } }
+//Resources:VerifierResources:NotApplicable
+
+		public static string NotApplicable { get { return GetResourceString("NotApplicable"); } }
+//Resources:VerifierResources:Verifier_Aborted
+
 		public static string Verifier_Aborted { get { return GetResourceString("Verifier_Aborted"); } }
 //Resources:VerifierResources:Verifier_Actual
 
@@ -92,6 +102,9 @@ namespace LagoVista.IoT.Verifiers.Resources
 
 		public static class Names
 		{
+			public const string Empty = "Empty";
+			public const string NA = "NA";
+			public const string NotApplicable = "NotApplicable";
 			public const string Verifier_Aborted = "Verifier_Aborted";
 			public const string Verifier_Actual = "Verifier_Actual";
 			public const string Verifier_Expected = "Verifier_Expected";
@@ -107,3 +120,4 @@ namespace LagoVista.IoT.Verifiers.Resources
 		}
 	}
 }
+

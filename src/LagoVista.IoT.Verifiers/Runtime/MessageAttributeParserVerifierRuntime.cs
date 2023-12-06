@@ -116,9 +116,10 @@ namespace LagoVista.IoT.Verifiers.Runtime
                     {
                         var verificationResult = new VerificationResult()
                         {
-                            Key = "n/a",
+                            Field = VerifierResources.NotApplicable,
+                            Key = VerifierResources.NA,
                             Expected = verifier.ExpectedOutput,
-                            Actual = String.IsNullOrEmpty(parseResult.Result) ? "-empty-" : parseResult.Result,
+                            Actual = String.IsNullOrEmpty(parseResult.Result) ? VerifierResources.Empty : parseResult.Result,
                             Success = false,
                         };
 
@@ -131,9 +132,10 @@ namespace LagoVista.IoT.Verifiers.Runtime
                     {
                         result.Results.Add(new VerificationResult()
                         {
-                            Key = "n/a",
+                            Field = VerifierResources.NotApplicable,
+                            Key = VerifierResources.NA,
                             Expected = verifier.ExpectedOutput,
-                            Actual = String.IsNullOrEmpty(parseResult.Result) ? "-empty-" : parseResult.Result,
+                            Actual = String.IsNullOrEmpty(parseResult.Result) ? VerifierResources.Empty : parseResult.Result,
                             Success = true,
                         });
                     }
