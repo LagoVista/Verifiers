@@ -17,7 +17,7 @@ using LagoVista.Core.Models;
 using LagoVista.IoT.Web.Common.Attributes;
 
 namespace LagoVista.IoT.Verifiers.Rest.Controllers
-{    
+{
     [Authorize]
     [ConfirmedUser]
     public class VerifierController : LagoVistaBaseController
@@ -60,9 +60,13 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         public async Task<DetailResponse<Verifier>> GetVerifierAsync(string id)
         {
             var verifier = await _verifierManager.GetVerifierAsync(id, OrgEntityHeader, UserEntityHeader);
+            return DetailResponse<Verifier>.Create(verifier, true);
+        }
 
-            return DetailResponse<Verifier>.Create(verifier);
-
+        [HttpGet("/api/verifier/expectedoutput/factory")]
+        public DetailResponse<ExpectedValue> CreateExpectedValueAsync(string type)
+        {
+            return DetailResponse<ExpectedValue>.Create();
         }
 
         /// <summary>
@@ -77,7 +81,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
             SetOwnedProperties(verifier);
             SetAuditProperties(verifier);
 
-            switch(type.ToLower())
+            switch (type.ToLower())
             {
                 case "message":
                     verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageParser);
@@ -89,7 +93,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
 
             var verifierResponse = DetailResponse<Verifier>.Create(verifier);
             verifierResponse.IsEditing = false;
-            return verifierResponse;            
+            return verifierResponse;
         }
 
         /// <summary>
@@ -114,7 +118,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
         public async Task<ListResponse<Verifier>> GetVerifiersForComponentAsync(string componentid)
         {
             var verifiers = await _verifierManager.GetVerifierForComponentAsync(componentid, OrgEntityHeader, UserEntityHeader);
-            
+
             return ListResponse<Verifier>.Create(verifiers);
         }
 

@@ -25,7 +25,7 @@ namespace LagoVista.IoT.Verifiers.Rest.Controllers
             _fieldParserRuntime = fieldParserRuntime;
         }
 
-        [HttpPost("/api/verifierruntime/fieldparser/execute")]
+        [HttpPost("/api/verifierruntime/messageattributeparser/execute")]
         public Task<VerificationResults> VerifyFieldParser([FromBody] VerificationRequest<MessageAttributeParser> verificationRequest)
         {
             return _fieldParserRuntime.VerifyAsync(verificationRequest, OrgEntityHeader, UserEntityHeader);
