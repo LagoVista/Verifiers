@@ -101,9 +101,9 @@ namespace LagoVista.IoT.Verifiers.Utils
 
         }
 
-        public void Trace(string message)
+
+        public void Trace(string message, params KeyValuePair<string, string>[] args)
         {
-            
         }
 
         public void TrackEvent(string message, Dictionary<string, string> parameters)
