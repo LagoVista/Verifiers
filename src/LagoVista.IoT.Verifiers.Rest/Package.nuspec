@@ -2,28 +2,28 @@
 <package>
   <metadata>
     <id>LagoVista.IoT.Verifiers.Rest</id>
-    <version>3.0.2394.0953</version>
+    <version>3.0.3043.1901</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://www.nuviot.com</projectUrl>
     <iconUrl>http://bytemaster.blob.core.windows.net/icons/LagoVistaIcon.png</iconUrl>
     <description>Provides a set of REST Services to Interact with Verifiers that are created as part of the LagoVista IoT, Devices and Home Automation Frameworks.  Verifiers are used to confirm that configured components work as expected.</description>
-    <copyright>Copyright Software Logistics - 2023</copyright>
+    <copyright>Copyright Software Logistics - 2025</copyright>
     <tags>HomeAutomation IoT</tags>
     <icon>LagoVistaIcon.png</icon>
-    <releaseNotes>Build Date: 12/6/2023 2:53:13 PM UTC</releaseNotes>
+    <releaseNotes>Build Date: 9/15/2025 11:01:50 PM UTC</releaseNotes>
     <repository url="https://www.github.com/lagovista" type="git" branch="master"></repository>
     <dependencies>
-      <group targetFramework="net6.0">
-        <dependency id="LagoVista.IoT.Web.Common" version="3.0.2394.0953" />
-        <dependency id="LagoVista.IoT.Verifiers" version="3.0.2394.0953" />
+      <group targetFramework="net9.0">
+        <dependency id="LagoVista.IoT.Web.Common" version="3.0.3043.1901" />
+        <dependency id="LagoVista.IoT.Verifiers" version="3.0.3043.1901" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <file src="LagoVistaIcon.png" target="LagoVistaIcon.png" />
-    <file src="bin\release\net6.0\LagoVista.IoT.Verifiers.Rest.dll" target="lib\net6.0\LagoVista.IoT.Verifiers.Rest.dll" />
-    <file src="bin\release\net6.0\LagoVista.IoT.Verifiers.Rest.pdb" target="lib\net6.0\LagoVista.IoT.Verifiers.Rest.pdb" />
+    <file src="bin\release\net9.0\LagoVista.IoT.Verifiers.Rest.dll" target="lib\net9.0\LagoVista.IoT.Verifiers.Rest.dll" />
+    <file src="bin\release\net9.0\LagoVista.IoT.Verifiers.Rest.pdb" target="lib\net9.0\LagoVista.IoT.Verifiers.Rest.pdb" />
   </files>
 </package>
