@@ -3,10 +3,10 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin" Version="3.0.3043.1901" />
-    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.3043.1901" />
-    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.3043.1901" />
-    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="3.0.3043.1901" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin" Version="3.0.3099.1426" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.3099.1426" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.3099.1426" />
+    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="3.0.3099.1426" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="T4ResourceGenerator.cs">

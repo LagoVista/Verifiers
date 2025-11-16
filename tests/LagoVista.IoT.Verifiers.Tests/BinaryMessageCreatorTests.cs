@@ -1,4 +1,8 @@
-﻿using System;
+// --- BEGIN CODE INDEX META (do not edit) ---
+// ContentHash: 63f30b84f293b91f0be764e4a546433b0907975e2bbfa5c32a8ffe81108935d2
+// IndexVersion: 2
+// --- END CODE INDEX META ---
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LagoVista.IoT.Runtime.Core.Models.Verifiers;
 
