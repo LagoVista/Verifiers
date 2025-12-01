@@ -71,7 +71,7 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
             var parserMgr = GetParserManager(new KeyValuePair<string, string>("key1", "5"), new KeyValuePair<string, string>("key2", "value1"));
 
             var verifier = new Verifier();
-            verifier.Headers.Add(new Header() { Name = "field1", Value = "value1" });
+            verifier.Headers.Add(new SampleMessageHeader() { Name = "field1", Value = "value1" });
             verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
             verifier.ShouldSucceed = true;
             verifier.InputType = EntityHeader<InputTypes>.Create(InputTypes.Binary);
@@ -106,7 +106,7 @@ namespace LagoVista.IoT.Verifiers.Tests.MessageVerfierTests
             var parserMgr = GetParserManager(new KeyValuePair<string, string>("key1", "5"), new KeyValuePair<string, string>("key2", "value1"));
 
             var verifier = new Verifier();
-            verifier.Headers.Add(new Header() { Name = "field1", Value = "value1" });
+            verifier.Headers.Add(new SampleMessageHeader() { Name = "field1", Value = "value1" });
             verifier.VerifierType = EntityHeader<VerifierTypes>.Create(VerifierTypes.MessageFieldParser);
             verifier.ShouldSucceed = true;
             verifier.InputType = EntityHeader<InputTypes>.Create(InputTypes.Binary);
