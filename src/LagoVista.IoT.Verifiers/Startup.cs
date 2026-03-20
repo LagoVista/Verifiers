@@ -6,6 +6,7 @@ using LagoVista.Core.Interfaces;
 using LagoVista.IoT.Runtime.Core.Module;
 using LagoVista.IoT.Verifiers.Managers;
 using LagoVista.IoT.Verifiers.Runtime;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;

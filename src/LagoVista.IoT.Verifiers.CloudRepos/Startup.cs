@@ -3,9 +3,12 @@
 // IndexVersion: 2
 // --- END CODE INDEX META ---
 using LagoVista.Core.Interfaces;
+using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.Verifiers.CloudRepos.Repos;
 using LagoVista.IoT.Verifiers.Managers;
 using LagoVista.IoT.Verifiers.Repos;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LagoVista.IoT.Verifiers.CloudRepos
 {
@@ -19,3 +22,16 @@ namespace LagoVista.IoT.Verifiers.CloudRepos
         }
     }
 }
+
+namespace LagoVista.DependencyInjection
+{
+    public static class VerifierModule
+    {
+        public static void AddVerifiersModule(this IServiceCollection services, IConfigurationRoot configRoot, IAdminLogger logger)
+        {
+            LagoVista.IoT.Verifiers.CloudRepos.Startup.ConfigureServices(services);
+            LagoVista.IoT.Verifiers.Startup.ConfigureServices(services);
+        }
+    }
+}
+
