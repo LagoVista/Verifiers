@@ -14,15 +14,9 @@ namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
 {
     public class VerifierResultRepo : LagoVista.CloudStorage.DocumentDB.DocumentDBRepoBase<VerificationResults>, IVerifierResultRepo
     {
-        bool _shouldConsolidateCollections;
-
         public VerifierResultRepo(IVerifierSettings repoSettings, IAdminLogger logger) : base(repoSettings.VerifiersDocDbStorage.Uri, repoSettings.VerifiersDocDbStorage.AccessKey, repoSettings.VerifiersDocDbStorage.ResourceName, logger)
         {
-            _shouldConsolidateCollections = repoSettings.ShouldConsolidateCollections;
         }
-
-        protected override bool ShouldConsolidateCollections => _shouldConsolidateCollections;
-
         public Task AddResultAsync(VerificationResults result)
         {
             return CreateDocumentAsync(result);

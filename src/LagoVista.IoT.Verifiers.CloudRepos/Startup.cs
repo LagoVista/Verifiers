@@ -19,6 +19,7 @@ namespace LagoVista.IoT.Verifiers.CloudRepos
             services.AddTransient<IVerifierManager, VerifierManager>();
             services.AddTransient<IVerifierRepo, VerifierRepo>();
             services.AddTransient<IVerifierResultRepo, VerifierResultRepo>();
+            services.AddTransient<IVerifierSettings, VerifierSettings>();
         }
     }
 }

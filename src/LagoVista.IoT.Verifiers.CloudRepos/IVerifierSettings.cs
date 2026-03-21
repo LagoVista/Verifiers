@@ -11,9 +11,7 @@ namespace LagoVista.IoT.Verifiers.CloudRepos
 {
     public interface IVerifierSettings
     {
-        IConnectionSettings VerifiersDocDbStorage { get; set; }
-        IConnectionSettings VerifiersTableStorage { get; set; }
-
-        bool ShouldConsolidateCollections { get; }
+        IConnectionSettings VerifiersDocDbStorage { get; }
+        IConnectionSettings VerifiersTableStorage { get; }
     }
 }
