@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin" Version="3.0.3230.1347" />
-    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.3230.1347" />
-    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.3230.1347" />
-    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="3.0.3230.1347" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin" Version="3.0.3231.0429" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.3231.0429" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.3231.0429" />
+    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="3.0.3231.0429" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="T4ResourceGenerator.cs">

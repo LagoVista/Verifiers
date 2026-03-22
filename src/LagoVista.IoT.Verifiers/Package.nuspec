@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>LagoVista.IoT.Verifiers</id>
-    <version>3.0.3230.1347</version>
+    <version>3.0.3231.0429</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,20 +12,20 @@
     <copyright>Copyright Software Logistics - 2026</copyright>
     <tags>LagoVista HomeAutomation IoT</tags>
     <icon>LagoVistaIcon.png</icon>
-    <releaseNotes>Build Date: 3/21/2026 5:47:28 PM UTC</releaseNotes>
+    <releaseNotes>Build Date: 3/22/2026 8:29:57 AM UTC</releaseNotes>
     <repository url="https://www.github.com/lagovista" type="git" branch="master"></repository>
     <dependencies>
-      <group targetFramework="netstandard2.1">
-        <dependency id="LagoVista.IoT.DeviceAdmin" version="3.0.3230.1347" />
-        <dependency id="LagoVista.IoT.DeviceMessaging.Models" version="3.0.3230.1347" />
-        <dependency id="LagoVista.IoT.Pipeline.Models" version="3.0.3230.1347" />
-        <dependency id="LagoVista.IoT.Runtime.Core" version="3.0.3230.1347" />
+      <group targetFramework="net9.0">
+        <dependency id="LagoVista.IoT.DeviceAdmin" version="3.0.3231.0429" />
+        <dependency id="LagoVista.IoT.DeviceMessaging.Models" version="3.0.3231.0429" />
+        <dependency id="LagoVista.IoT.Pipeline.Models" version="3.0.3231.0429" />
+        <dependency id="LagoVista.IoT.Runtime.Core" version="3.0.3231.0429" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <file src="LagoVistaIcon.png" target="LagoVistaIcon.png" />
-    <file src="bin\release\netstandard2.1\LagoVista.IoT.Verifiers.dll" target="lib\netstandard2.1\LagoVista.IoT.Verifiers.dll" />
-    <file src="bin\release\netstandard2.1\LagoVista.IoT.Verifiers.pdb" target="lib\netstandard2.1\LagoVista.IoT.Verifiers.pdb" />
+    <file src="bin\release\net9.0\LagoVista.IoT.Verifiers.dll" target="lib\net9.0\LagoVista.IoT.Verifiers.dll" />
+    <file src="bin\release\net9.0\LagoVista.IoT.Verifiers.pdb" target="lib\net9.0\LagoVista.IoT.Verifiers.pdb" />
   </files>
 </package>
