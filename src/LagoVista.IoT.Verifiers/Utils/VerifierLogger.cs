@@ -122,5 +122,15 @@ namespace LagoVista.IoT.Verifiers.Utils
         public void TrackMetric(string kind, string name, MetricType metricType, int count, params KeyValuePair<string, string>[] args)
         {
         }
+
+        public void WriteJson<T>(string name, T data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void WriteJson(string name, string json)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
