@@ -2,19 +2,20 @@
 // ContentHash: 01ebbca688067013efb2c99a342576bc3816cfb16757353f85e5c306783baf65
 // IndexVersion: 2
 // --- END CODE INDEX META ---
-using LagoVista.IoT.Verifiers.Repos;
-using System.Threading.Tasks;
-using LagoVista.Core.PlatformSupport;
+using LagoVista.CloudStorage.Interfaces;
 using LagoVista.CloudStorage.Storage;
-using System.Collections.Generic;
-using LagoVista.IoT.Runtime.Core.Models.Verifiers;
+using LagoVista.Core.PlatformSupport;
 using LagoVista.IoT.Logging.Loggers;
+using LagoVista.IoT.Runtime.Core.Models.Verifiers;
+using LagoVista.IoT.Verifiers.Repos;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LagoVista.IoT.Verifiers.CloudRepos.Repos
 {
     public class VerifierResultRepo : LagoVista.CloudStorage.DocumentDB.DocumentDBRepoBase<VerificationResults>, IVerifierResultRepo
     {
-        public VerifierResultRepo(IVerifierSettings repoSettings, IAdminLogger logger) : base(repoSettings.VerifiersDocDbStorage.Uri, repoSettings.VerifiersDocDbStorage.AccessKey, repoSettings.VerifiersDocDbStorage.ResourceName, logger)
+        public VerifierResultRepo(IDocumentCloudCachedServices services) : base(services)
         {
         }
         public Task AddResultAsync(VerificationResults result)

@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>LagoVista.IoT.Verifiers</id>
-    <version>3.0.3231.0429</version>
+    <version>3.0.3387.2047</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,14 +12,14 @@
     <copyright>Copyright Software Logistics - 2026</copyright>
     <tags>LagoVista HomeAutomation IoT</tags>
     <icon>LagoVistaIcon.png</icon>
-    <releaseNotes>Build Date: 3/22/2026 8:29:57 AM UTC</releaseNotes>
+    <releaseNotes>Build Date: 8/26/2026 12:47:10 AM UTC</releaseNotes>
     <repository url="https://www.github.com/lagovista" type="git" branch="master"></repository>
     <dependencies>
       <group targetFramework="net9.0">
-        <dependency id="LagoVista.IoT.DeviceAdmin" version="3.0.3231.0429" />
-        <dependency id="LagoVista.IoT.DeviceMessaging.Models" version="3.0.3231.0429" />
-        <dependency id="LagoVista.IoT.Pipeline.Models" version="3.0.3231.0429" />
-        <dependency id="LagoVista.IoT.Runtime.Core" version="3.0.3231.0429" />
+        <dependency id="LagoVista.IoT.DeviceAdmin" version="3.0.3387.2047" />
+        <dependency id="LagoVista.IoT.DeviceMessaging.Models" version="3.0.3387.2047" />
+        <dependency id="LagoVista.IoT.Pipeline.Models" version="3.0.3387.2047" />
+        <dependency id="LagoVista.IoT.Runtime.Core" version="3.0.3387.2047" />
       </group>
     </dependencies>
   </metadata>
