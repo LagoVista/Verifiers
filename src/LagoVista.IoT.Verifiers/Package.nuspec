@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
     <id>LagoVista.IoT.Verifiers</id>
-    <version>3.0.3387.2047</version>
+    <version>6.0.0</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -16,16 +16,16 @@
     <repository url="https://www.github.com/lagovista" type="git" branch="master"></repository>
     <dependencies>
       <group targetFramework="net9.0">
-        <dependency id="LagoVista.IoT.DeviceAdmin" version="3.0.3387.2047" />
-        <dependency id="LagoVista.IoT.DeviceMessaging.Models" version="3.0.3387.2047" />
-        <dependency id="LagoVista.IoT.Pipeline.Models" version="3.0.3387.2047" />
-        <dependency id="LagoVista.IoT.Runtime.Core" version="3.0.3387.2047" />
+        <dependency id="LagoVista.IoT.DeviceAdmin" version="6.0.0" />
+        <dependency id="LagoVista.IoT.DeviceMessaging.Models" version="6.0.0" />
+        <dependency id="LagoVista.IoT.Pipeline.Models" version="6.0.0" />
+        <dependency id="LagoVista.IoT.Runtime.Core" version="6.0.0" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <file src="LagoVistaIcon.png" target="LagoVistaIcon.png" />
-    <file src="bin\release\net9.0\LagoVista.IoT.Verifiers.dll" target="lib\net9.0\LagoVista.IoT.Verifiers.dll" />
-    <file src="bin\release\net9.0\LagoVista.IoT.Verifiers.pdb" target="lib\net9.0\LagoVista.IoT.Verifiers.pdb" />
+    <file src="bin/Release/net9.0/LagoVista.IoT.Verifiers.dll" target="lib/net9.0/LagoVista.IoT.Verifiers.dll" />
+    <file src="bin/Release/net9.0/LagoVista.IoT.Verifiers.pdb" target="lib/net9.0/LagoVista.IoT.Verifiers.pdb" />
   </files>
 </package>

@@ -3,10 +3,10 @@
     <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin" Version="3.0.3387.2047" />
-    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.3387.2047" />
-    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.3387.2047" />
-    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="3.0.3387.2047" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" />
+    <PackageReference Include="LagoVista.IoT.Runtime.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="T4ResourceGenerator.cs">
@@ -26,8 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\VerifierResources.resx">
-      <Generator>
-      </Generator>
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>
